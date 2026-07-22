@@ -1,0 +1,7 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+187405886,129790326,Kesehatan Bayi,3,True,False,,id-11134207-7r98p-luk1yxzz716k50,2,id,2026-07-01
+187405886,106309332,On Sale,5,True,False,,id-11134207-7r98p-luk1yxzz716k50,5,id,2026-07-01
+187405886,129790326,Kesehatan Bayi,3,True,False,,id-11134207-7r98p-luk1yxzz716k50,2,id,2026-07-02
+187405886,106309332,On Sale,5,True,False,,id-11134207-7r98p-luk1yxzz716k50,5,id,2026-07-02
+187405886,129790326,Kesehatan Bayi,3,True,False,,id-11134207-7r98p-luk1yxzz716k50,2,id,2026-07-03
+187405886,106309332,On Sale,5,True,False,,id-11134207-7r98p-luk1yxzz716k50,5,id,2026-07-03

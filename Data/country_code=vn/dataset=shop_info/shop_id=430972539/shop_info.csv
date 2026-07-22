@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+430972539,Perfetti Van Melle Vietnam,perfetti_officialstore,4.931921,255284,23,True,100,55,49047,521,279,0,2021-04-26T07:22:24+00:00,False,vn,2026-07-03

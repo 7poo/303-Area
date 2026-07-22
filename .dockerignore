@@ -1,0 +1,7 @@
+.git
+.gitignore
+*.zip
+*.pdf
+warehouse
+__pycache__
+*.pyc

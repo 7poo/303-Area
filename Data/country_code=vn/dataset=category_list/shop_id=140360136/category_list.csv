@@ -1,0 +1,28 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+140360136,265356646,THÙNG BÁNH,5,True,False,,vn-11134207-820l4-mibiaj2his5g77,1,vn,2026-07-01
+140360136,262895510,Kinh Đô Tết 2026,14,True,False,,vn-11134207-820l4-mghnksbf9jwsf9,1,vn,2026-07-01
+140360136,243819608,Tất cả sản phẩm,31,True,False,,mms@vn-11134204-7ras8-mcu4pr4wemqkf3,1,vn,2026-07-01
+140360136,15084596,AFC,4,True,False,,mms@vn-11134204-7ras8-mcu4pr4wsof0d9,1,vn,2026-07-01
+140360136,15084899,RITZ & SLIDE,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4whfvgc0,1,vn,2026-07-01
+140360136,249854839,OREO,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4wr9uk02,1,vn,2026-07-01
+140360136,15084057,COSY,2,True,False,,mms@vn-11134204-7ras8-mcu4pr4wk90c01,1,vn,2026-07-01
+140360136,15085618,LU,1,True,False,,mms@vn-11134204-7ras8-mcu4pr4wlnks43,1,vn,2026-07-01
+140360136,15084814,SOLITE,3,True,False,,mms@vn-11134204-7ras8-mcu4pr4wogpoe0,1,vn,2026-07-01
+140360136,265356646,THÙNG BÁNH,5,True,False,,vn-11134207-820l4-mibiaj2his5g77,1,vn,2026-07-02
+140360136,262895510,Kinh Đô Tết 2026,14,True,False,,vn-11134207-820l4-mghnksbf9jwsf9,1,vn,2026-07-02
+140360136,243819608,Tất cả sản phẩm,31,True,False,,mms@vn-11134204-7ras8-mcu4pr4wemqkf3,1,vn,2026-07-02
+140360136,15084596,AFC,4,True,False,,mms@vn-11134204-7ras8-mcu4pr4wsof0d9,1,vn,2026-07-02
+140360136,15084899,RITZ & SLIDE,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4whfvgc0,1,vn,2026-07-02
+140360136,249854839,OREO,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4wr9uk02,1,vn,2026-07-02
+140360136,15084057,COSY,2,True,False,,mms@vn-11134204-7ras8-mcu4pr4wk90c01,1,vn,2026-07-02
+140360136,15085618,LU,1,True,False,,mms@vn-11134204-7ras8-mcu4pr4wlnks43,1,vn,2026-07-02
+140360136,15084814,SOLITE,3,True,False,,mms@vn-11134204-7ras8-mcu4pr4wogpoe0,1,vn,2026-07-02
+140360136,265356646,THÙNG BÁNH,5,True,False,,vn-11134207-820l4-mibiaj2his5g77,1,vn,2026-07-03
+140360136,262895510,Kinh Đô Tết 2026,15,True,False,,vn-11134207-820l4-mghnksbf9jwsf9,1,vn,2026-07-03
+140360136,243819608,Tất cả sản phẩm,31,True,False,,mms@vn-11134204-7ras8-mcu4pr4wemqkf3,1,vn,2026-07-03
+140360136,15084596,AFC,4,True,False,,mms@vn-11134204-7ras8-mcu4pr4wsof0d9,1,vn,2026-07-03
+140360136,15084899,RITZ & SLIDE,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4whfvgc0,1,vn,2026-07-03
+140360136,249854839,OREO,7,True,False,,mms@vn-11134204-7ras8-mcu4pr4wr9uk02,1,vn,2026-07-03
+140360136,15084057,COSY,2,True,False,,mms@vn-11134204-7ras8-mcu4pr4wk90c01,1,vn,2026-07-03
+140360136,15085618,LU,1,True,False,,mms@vn-11134204-7ras8-mcu4pr4wlnks43,1,vn,2026-07-03
+140360136,15084814,SOLITE,3,True,False,,mms@vn-11134204-7ras8-mcu4pr4wogpoe0,1,vn,2026-07-03

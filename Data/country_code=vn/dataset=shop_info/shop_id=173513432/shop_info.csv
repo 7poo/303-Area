@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+173513432,Richy - Chi Nhánh Miền Bắc,richystore.mb,4.921164,96105,325,False,98,10445,113035,1351,788,0,2019-08-27T10:13:18+00:00,False,vn,2026-07-03

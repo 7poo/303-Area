@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+859233628,He-Ji Official Store,hejiofficial,4.807281,10933,10,True,100,5076,19853,593,134,0,2022-09-08T03:09:36+00:00,False,id,2026-07-03

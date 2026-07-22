@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+187405886,Alara Cosmetic Official Store,alaracosmetic.official,4.787985,6763,7,True,39,6525,4839,140,30,29,2019-10-11T02:08:13+00:00,False,id,2026-07-03

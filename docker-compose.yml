@@ -1,0 +1,87 @@
+services:
+  data-foundation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATA_DIR: /data
+      DB_PATH: /warehouse/market.duckdb
+    volumes:
+      - ./Data:/data:ro
+      - ./warehouse:/warehouse
+    command: ["python", "-m", "src.etl", "--reset"]
+
+  product-matching:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_PATH: /warehouse/market.duckdb
+    volumes:
+      - ./warehouse:/warehouse
+    command: ["python", "-m", "src.matching", "--db-path", "/warehouse/market.duckdb", "--backend", "tfidf", "--top-k", "5", "--review-size", "100"]
+
+  market-signals:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_PATH: /warehouse/market.duckdb
+    volumes:
+      - ./warehouse:/warehouse
+    command: ["python", "-m", "src.signals", "--db-path", "/warehouse/market.duckdb", "--min-peer-score", "0.45"]
+
+  recommendation-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_PATH: /warehouse/market.duckdb
+    volumes:
+      - ./warehouse:/warehouse
+      - ./validation:/validation:ro
+    command: ["python", "-m", "src.recommendations", "--db-path", "/warehouse/market.duckdb"]
+
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_PATH: /warehouse/market.duckdb
+      MEMORY_PATH: /warehouse/agent_memory.sqlite
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-chat}
+    volumes:
+      - ./warehouse:/warehouse
+    entrypoint: ["python", "-m", "src.agent"]
+    command: ["${AGENT_MESSAGE:-market overview}"]
+
+  agent-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_PATH: /warehouse/market.duckdb
+      MEMORY_PATH: /warehouse/agent_memory.sqlite
+      AGENT_ENV: ${AGENT_ENV:-development}
+      AGENT_API_TOKEN: ${AGENT_API_TOKEN:-}
+      AGENT_SHOP_SCOPE: ${AGENT_SHOP_SCOPE:-}
+      AGENT_RATE_LIMIT: ${AGENT_RATE_LIMIT:-60}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-chat}
+    volumes:
+      - ./warehouse:/warehouse
+    ports:
+      - "8080:8080"
+    command: ["python", "-m", "src.agent_server"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - agent-api
+    ports:
+      - "5173:80"

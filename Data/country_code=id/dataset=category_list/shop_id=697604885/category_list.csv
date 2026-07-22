@@ -1,0 +1,4 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+697604885,11043151,"Body Cream, Body Lotion & Body Butter",3,False,False,,id-11134207-822wg-mmfhbep3n6kg91,8,id,2026-07-01
+697604885,11043151,"Body Cream, Body Lotion & Body Butter",3,False,False,,id-11134207-822wg-mmfhbep3n6kg91,8,id,2026-07-02
+697604885,11043151,"Body Cream, Body Lotion & Body Butter",3,False,False,,id-11134207-822wg-mmfhbep3n6kg91,8,id,2026-07-03

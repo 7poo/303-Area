@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+213989179,Bibica Official Store ,bibica_corporation,4.897342,84664,98,True,98,6994,46422,746,439,0,2019-12-26T02:53:09+00:00,False,vn,2026-07-03

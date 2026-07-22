@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+1546895026,Mars Snacking VN,mars.wrigley.vn,4.937186,14986,97,True,100,257,27368,202,138,0,2025-05-21T07:02:06+00:00,False,vn,2026-07-03

@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+464391416,Bánh Kẹo Hải Hà - Chính hãng,haihaco_hcm,4.947162,10920,32,False,,,2337,22,16,0,2021-06-11T03:46:25+00:00,False,vn,2026-07-03

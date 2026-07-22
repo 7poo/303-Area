@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+108166524,Nestlé Chính hãng,nestlevnn,4.923517,476759,1753,True,100,947,821759,8814,6621,0,2018-11-27T10:26:31+00:00,False,vn,2026-07-03

@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+200048291,Prettywell Official Shop,prettywell.co,4.894138,114212,38,True,98,5714,75002,785,78,0,2019-11-15T14:45:53+00:00,False,id,2026-07-03

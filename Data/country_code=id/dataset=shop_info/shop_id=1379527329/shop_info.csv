@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+1379527329,ZOICY Official Store,zoicy,4.932727,2930,19,True,100,87,4948,32,2,0,2024-10-11T07:19:30+00:00,False,id,2026-07-03

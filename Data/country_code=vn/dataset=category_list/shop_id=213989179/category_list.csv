@@ -1,0 +1,25 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+213989179,253250963,Kẹo Cho Bé,12,True,False,,vn-11134207-81ztc-mq2wj81jtrm374,1,vn,2026-07-01
+213989179,254854485,Bánh Ăn Sáng,12,True,False,,mms@vn-11134204-81ztc-mplsb6ssaakg28,1,vn,2026-07-01
+213989179,246750581,Bánh Dinh Dưỡng,19,True,False,,vn-11134207-81ztc-mq306s87r1n2c8,1,vn,2026-07-01
+213989179,259211391,Sản Phẩm Mới,9,True,False,,mms@vn-11134204-81ztc-mohdkpzi3sb1bb,1,vn,2026-07-01
+213989179,259149849,Quasure Sugar Free,5,True,False,,vn-11134207-81ztc-mq2yudczjnda23,1,vn,2026-07-01
+213989179,260400722,Gooka Nougat Filling,8,True,False,,vn-11134207-81ztc-mq2zhtji0o3k0b,1,vn,2026-07-01
+213989179,246750434,Bánh Ăn Vặt,11,True,False,,vn-11134207-81ztc-mq2ytq19f7dbca,1,vn,2026-07-01
+213989179,263055824,Kẹo Ăn Vặt,18,True,False,,vn-11134207-81ztc-mq2usoxckt1ef0,1,vn,2026-07-01
+213989179,253250963,Kẹo Cho Bé,13,True,False,,vn-11134207-81ztc-mq2wj81jtrm374,1,vn,2026-07-02
+213989179,254854485,Bánh Ăn Sáng,12,True,False,,mms@vn-11134204-81ztc-mplsb6ssaakg28,1,vn,2026-07-02
+213989179,246750581,Bánh Dinh Dưỡng,19,True,False,,vn-11134207-81ztc-mq306s87r1n2c8,1,vn,2026-07-02
+213989179,259211391,Sản Phẩm Mới,9,True,False,,mms@vn-11134204-81ztc-mohdkpzi3sb1bb,1,vn,2026-07-02
+213989179,259149849,Quasure Sugar Free,5,True,False,,vn-11134207-81ztc-mq2yudczjnda23,1,vn,2026-07-02
+213989179,260400722,Gooka Nougat Filling,8,True,False,,vn-11134207-81ztc-mq2zhtji0o3k0b,1,vn,2026-07-02
+213989179,246750434,Bánh Ăn Vặt,11,True,False,,vn-11134207-81ztc-mq2ytq19f7dbca,1,vn,2026-07-02
+213989179,263055824,Kẹo Ăn Vặt,18,True,False,,vn-11134207-81ztc-mq2usoxckt1ef0,1,vn,2026-07-02
+213989179,253250963,Kẹo Cho Bé,13,True,False,,vn-11134207-81ztc-mq2wj81jtrm374,1,vn,2026-07-03
+213989179,254854485,Bánh Ăn Sáng,12,True,False,,mms@vn-11134204-81ztc-mplsb6ssaakg28,1,vn,2026-07-03
+213989179,246750581,Bánh Dinh Dưỡng,19,True,False,,vn-11134207-81ztc-mq306s87r1n2c8,1,vn,2026-07-03
+213989179,259211391,Sản Phẩm Mới,9,True,False,,mms@vn-11134204-81ztc-mohdkpzi3sb1bb,1,vn,2026-07-03
+213989179,259149849,Quasure Sugar Free,5,True,False,,vn-11134207-81ztc-mq2yudczjnda23,1,vn,2026-07-03
+213989179,260400722,Gooka Nougat Filling,8,True,False,,vn-11134207-81ztc-mq2zhtji0o3k0b,1,vn,2026-07-03
+213989179,246750434,Bánh Ăn Vặt,11,True,False,,vn-11134207-81ztc-mq2ytq19f7dbca,1,vn,2026-07-03
+213989179,263055824,Kẹo Ăn Vặt,18,True,False,,vn-11134207-81ztc-mq2usoxckt1ef0,1,vn,2026-07-03

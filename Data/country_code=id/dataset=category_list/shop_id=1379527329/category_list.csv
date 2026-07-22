@@ -1,0 +1,13 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+1379527329,256769111,Masker Wajah,8,True,False,,mms@id-11134204-7rbk3-m7bwtv64iyl178,8,id,2026-07-01
+1379527329,256769110,Paket & Set Kecantikan,1,True,False,,mms@id-11134204-7rbke-m7bwtv64lrpx52,8,id,2026-07-01
+1379527329,256769113,Serum & Essence Wajah,1,True,False,,mms@id-11134204-7rbk3-m7bwtv64n6ad3c,8,id,2026-07-01
+1379527329,256769114,Toner,2,True,False,,mms@id-11134204-7rbke-m7bwtv64okut9d,8,id,2026-07-01
+1379527329,256769111,Masker Wajah,8,True,False,,mms@id-11134204-7rbk3-m7bwtv64iyl178,8,id,2026-07-02
+1379527329,256769110,Paket & Set Kecantikan,1,True,False,,mms@id-11134204-7rbke-m7bwtv64lrpx52,8,id,2026-07-02
+1379527329,256769113,Serum & Essence Wajah,1,True,False,,mms@id-11134204-7rbk3-m7bwtv64n6ad3c,8,id,2026-07-02
+1379527329,256769114,Toner,2,True,False,,mms@id-11134204-7rbke-m7bwtv64okut9d,8,id,2026-07-02
+1379527329,256769111,Masker Wajah,8,True,False,,mms@id-11134204-7rbk3-m7bwtv64iyl178,8,id,2026-07-03
+1379527329,256769110,Paket & Set Kecantikan,2,True,False,,mms@id-11134204-7rbke-m7bwtv64lrpx52,8,id,2026-07-03
+1379527329,256769113,Serum & Essence Wajah,1,True,False,,mms@id-11134204-7rbk3-m7bwtv64n6ad3c,8,id,2026-07-03
+1379527329,256769114,Toner,2,True,False,,mms@id-11134204-7rbke-m7bwtv64okut9d,8,id,2026-07-03

@@ -1,0 +1,2 @@
+shop_id,shop_name,username,rating_star,follower_count,item_count,is_official_shop,response_rate,response_time,rating_good,rating_normal,rating_bad,cancellation_rate,created_at,vacation,country_code,date
+140360136,Kinh Do Official Store,kinhdo_official_store,4.871107,548137,172,True,100,54,251786,4783,3617,29,2019-04-16T07:16:51+00:00,False,vn,2026-07-03

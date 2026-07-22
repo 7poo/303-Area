@@ -1,0 +1,12 @@
+warehouse/
+__pycache__/
+*.pyc
+.env
+.env.local
+*.zip
+*.pdf
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts

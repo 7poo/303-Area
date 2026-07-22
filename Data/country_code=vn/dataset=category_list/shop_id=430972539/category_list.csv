@@ -1,0 +1,13 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+430972539,122605646,Kẹo dẻo,5,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpy7fef7,1,vn,2026-07-01
+430972539,122605671,Kẹo cứng,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpzlzu60,1,vn,2026-07-01
+430972539,244780274,Kẹo mút,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq10kab0,1,vn,2026-07-01
+430972539,245604651,Kẹo ngậm,2,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq3tp6d8,1,vn,2026-07-01
+430972539,122605646,Kẹo dẻo,5,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpy7fef7,1,vn,2026-07-02
+430972539,122605671,Kẹo cứng,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpzlzu60,1,vn,2026-07-02
+430972539,244780274,Kẹo mút,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq10kab0,1,vn,2026-07-02
+430972539,245604651,Kẹo ngậm,2,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq3tp6d8,1,vn,2026-07-02
+430972539,122605646,Kẹo dẻo,5,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpy7fef7,1,vn,2026-07-03
+430972539,122605671,Kẹo cứng,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkpzlzu60,1,vn,2026-07-03
+430972539,244780274,Kẹo mút,3,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq10kab0,1,vn,2026-07-03
+430972539,245604651,Kẹo ngậm,2,True,False,,mms@vn-11134204-7ra0g-m9lf7mkq3tp6d8,1,vn,2026-07-03

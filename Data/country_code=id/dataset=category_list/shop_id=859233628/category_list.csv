@@ -1,0 +1,13 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+859233628,11043277,Paket & Set Kecantikan,4,False,False,,id-11134207-81ztk-me8a65vuzri90e,8,id,2026-07-01
+859233628,11043259,Serum & Essence Wajah,3,False,False,,id-11134207-8224q-ml4qej8o5slke8,8,id,2026-07-01
+859233628,11043261,Masker Wajah,2,False,False,,id-11134207-7ra0o-mdsxqvp5so0ed6,8,id,2026-07-01
+859233628,11043151,"Body Cream, Body Lotion & Body Butter",1,False,False,,id-11134207-7rbkb-m6s2yg5mahrw22,8,id,2026-07-01
+859233628,11043277,Paket & Set Kecantikan,4,False,False,,id-11134207-81ztk-me8a65vuzri90e,8,id,2026-07-02
+859233628,11043259,Serum & Essence Wajah,3,False,False,,id-11134207-8224q-ml4qej8o5slke8,8,id,2026-07-02
+859233628,11043261,Masker Wajah,2,False,False,,id-11134207-7ra0o-mdsxqvp5so0ed6,8,id,2026-07-02
+859233628,11043151,"Body Cream, Body Lotion & Body Butter",1,False,False,,id-11134207-7rbkb-m6s2yg5mahrw22,8,id,2026-07-02
+859233628,11043277,Paket & Set Kecantikan,4,False,False,,id-11134207-81ztk-me8a65vuzri90e,8,id,2026-07-03
+859233628,11043259,Serum & Essence Wajah,3,False,False,,id-11134207-8224q-ml4qej8o5slke8,8,id,2026-07-03
+859233628,11043261,Masker Wajah,2,False,False,,id-11134207-7ra0o-mdsxqvp5so0ed6,8,id,2026-07-03
+859233628,11043151,"Body Cream, Body Lotion & Body Butter",1,False,False,,id-11134207-7rbkb-m6s2yg5mahrw22,8,id,2026-07-03

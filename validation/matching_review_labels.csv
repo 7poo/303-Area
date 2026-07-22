@@ -1,0 +1,101 @@
+review_id,review_label,review_notes,annotator
+1,same_product,Richy Peppie cùng dòng và quy cách 360g,initial_adjudication
+2,same_product,Richy Peppie cùng dòng và quy cách 360g,initial_adjudication
+3,same_product,Richy Peppie cùng dòng khác tổ hợp vị,initial_adjudication
+4,same_product,Richy Peppie cùng dòng khác tổ hợp vị,initial_adjudication
+5,near_match,Cùng nhóm bánh ăn vặt nhưng khác dòng sản phẩm,initial_adjudication
+6,substitute,Cùng bánh bông lan khác brand,initial_adjudication
+7,substitute,Cùng bánh bông lan khác brand và campaign,initial_adjudication
+8,substitute,Cùng bánh bông lan khác brand,initial_adjudication
+9,substitute,Cùng bánh bông lan khác brand/quy cách,initial_adjudication
+10,not_comparable,Đồ uống không cùng loại bánh,initial_adjudication
+11,same_product,Jinju Richy cùng dòng bánh gạo,initial_adjudication
+12,same_product,Jinju Richy cùng dòng bánh gạo,initial_adjudication
+13,same_product,Jinju Richy cùng dòng bánh gạo,initial_adjudication
+14,near_match,Cùng dòng bánh gạo nhưng khác vị/quy cách,initial_adjudication
+15,near_match,Cùng dòng bánh gạo nhưng khác khối lượng lớn,initial_adjudication
+16,same_product,Karo/Festa Richy cùng dòng bánh tươi,initial_adjudication
+17,same_product,Karo/Festa Richy cùng dòng bánh tươi,initial_adjudication
+18,same_product,Karo/Festa Richy cùng dòng bánh tươi,initial_adjudication
+19,near_match,Festa khác biến thể sandwich,initial_adjudication
+20,near_match,Bánh mì ăn sáng khác brand và công thức,initial_adjudication
+21,same_product,Wismo Richy cùng dòng và hộp 400g,initial_adjudication
+22,not_comparable,Đồ uống không cùng loại bánh que,initial_adjudication
+23,not_comparable,Ngũ cốc không cùng loại bánh que,initial_adjudication
+24,not_comparable,Ngũ cốc không cùng loại bánh que,initial_adjudication
+25,not_comparable,Hạt nêm không cùng loại bánh que,initial_adjudication
+26,same_product,Kenju Richy cùng dòng và 279g,initial_adjudication
+27,same_product,Kenju Richy cùng dòng khác mô tả vị,initial_adjudication
+28,same_product,Kenju Richy cùng dòng dù là thùng,initial_adjudication
+29,same_product,Kenju Richy cùng dòng khác vị,initial_adjudication
+30,near_match,Cùng nhóm bánh quy nhưng khác combo/quy cách,initial_adjudication
+31,same_product,Wismo Richy cùng dòng bánh que,initial_adjudication
+32,near_match,Wismo cùng dòng nhưng khác quy cách đơn/400g,initial_adjudication
+33,not_comparable,Đồ uống không cùng loại bánh que,initial_adjudication
+34,not_comparable,Ngũ cốc không cùng loại bánh que,initial_adjudication
+35,not_comparable,Hạt nêm không cùng loại bánh que,initial_adjudication
+36,substitute,Cùng bánh quy mặn khác brand,initial_adjudication
+37,substitute,Cùng bánh quy khác brand và vị,initial_adjudication
+38,substitute,Cùng bánh quy khác brand/vị,initial_adjudication
+39,substitute,Cùng bánh quy khác brand và phân khúc,initial_adjudication
+40,substitute,Cùng bánh quy khác brand và phân khúc,initial_adjudication
+41,same_product,Richy LOT100 cùng dòng kẹo dẻo,initial_adjudication
+42,not_comparable,Bánh Kenju không phải kẹo dẻo,initial_adjudication
+43,substitute,Kẹo dẻo cùng nhu cầu khác brand,initial_adjudication
+44,substitute,Kẹo dẻo cùng nhu cầu khác brand,initial_adjudication
+45,not_comparable,Bánh Kenju không phải kẹo dẻo,initial_adjudication
+46,same_product,Richy 4D Fruit Gummy cùng dòng,initial_adjudication
+47,same_product,Richy 4D Fruit Gummy cùng dòng combo,initial_adjudication
+48,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+49,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+50,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+51,substitute,Cùng tone-up cream khác brand,initial_adjudication
+52,near_match,Cùng cream nhưng target là bundle day/night,initial_adjudication
+53,substitute,Cùng tone-up cream khác brand,initial_adjudication
+54,near_match,Cream đi kèm bundle đồ uống,initial_adjudication
+55,near_match,Cream đi kèm bundle sản phẩm khác,initial_adjudication
+56,substitute,Cùng tone-up cream khác brand,initial_adjudication
+57,substitute,Cùng tone-up cream khác brand,initial_adjudication
+58,near_match,Cream bundle khác cấu hình,initial_adjudication
+59,near_match,Cream bundle khác cấu hình,initial_adjudication
+60,near_match,Cream bundle khác cấu hình,initial_adjudication
+61,substitute,Cùng tone-up cream khác brand,initial_adjudication
+62,substitute,Cùng tone-up cream khác brand,initial_adjudication
+63,substitute,Cùng tone-up cream khác brand,initial_adjudication
+64,substitute,Cùng tone-up cream khác brand,initial_adjudication
+65,near_match,Cùng tone-up nhưng là bundle,initial_adjudication
+66,near_match,Cùng Jinju nhưng khác vị và quy cách,initial_adjudication
+67,near_match,Cùng Jinju nhưng combo khác quy cách,initial_adjudication
+68,near_match,Cùng Jinju khác vị,initial_adjudication
+69,near_match,Cùng Jinju khác vị/khối lượng,initial_adjudication
+70,near_match,Cùng Jinju khác vị/khối lượng,initial_adjudication
+71,same_product,Richy LOT100 cùng dòng kẹo dẻo,initial_adjudication
+72,same_product,Richy LOT100 cùng dòng kẹo dẻo,initial_adjudication
+73,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+74,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+75,substitute,Kẹo dẻo trái cây khác brand,initial_adjudication
+76,same_product,Karo Richy cùng dòng và mix vị,initial_adjudication
+77,same_product,Karo Richy cùng dòng và mix vị,initial_adjudication
+78,same_product,Karo Richy cùng dòng và combo tương đương,initial_adjudication
+79,same_product,Karo Richy cùng dòng và mix vị,initial_adjudication
+80,same_product,Karo Richy cùng dòng khác số bịch,initial_adjudication
+81,same_product,Karo Richy cùng dòng và mix vị,initial_adjudication
+82,same_product,Karo Richy cùng dòng và mix vị,initial_adjudication
+83,same_product,Karo Richy cùng dòng khác combo,initial_adjudication
+84,same_product,Karo Richy cùng dòng khác combo,initial_adjudication
+85,same_product,Karo Richy cùng dòng khác combo,initial_adjudication
+86,same_product,Oatmeal Richy cùng dòng,initial_adjudication
+87,same_product,Oatmeal Richy cùng dòng,initial_adjudication
+88,same_product,Oatmeal Richy cùng dòng,initial_adjudication
+89,same_product,Oatmeal Richy cùng dòng,initial_adjudication
+90,same_product,Oatmeal Richy cùng dòng khác combo,initial_adjudication
+91,same_product,Jinju Richy cùng vị/cùng 145g,initial_adjudication
+92,near_match,Cùng Jinju khác vị/khối lượng,initial_adjudication
+93,near_match,Cùng Jinju khác quy cách 303g,initial_adjudication
+94,near_match,Cùng Jinju khác vị/khối lượng,initial_adjudication
+95,near_match,Cùng Jinju khác combo/quy cách,initial_adjudication
+96,same_product,Festa Richy cùng dòng bánh mì hoa cúc,initial_adjudication
+97,same_product,Festa Richy cùng dòng bánh mì hoa cúc,initial_adjudication
+98,same_product,Festa Richy cùng dòng bánh mì hoa cúc,initial_adjudication
+99,near_match,Cùng bánh mì nhưng khác biến thể sandwich,initial_adjudication
+100,near_match,Cùng nhóm bánh ăn sáng nhưng khác brand/công thức,initial_adjudication

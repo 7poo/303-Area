@@ -1,0 +1,25 @@
+shop_id,shop_category_id,display_name,total,is_parent_category,is_sub_category,parent_shop_category_id,image,category_type,country_code,date
+1368540320,262782016,New Launch,7,True,False,,mms@id-11134204-81ztk-mq2tzkytnuo2a1,1,id,2026-07-01
+1368540320,258485608,Produk Terlaris,8,True,False,,mms@id-11134204-8224r-mk0oexabl893be,1,id,2026-07-01
+1368540320,258530308,Peeling Serum,3,True,False,,mms@id-11134204-81ztk-mq2tzkyti8ea3f,1,id,2026-07-01
+1368540320,266725540,Ginger Hair Care Serum,3,True,False,,mms@id-11134204-81ztm-mq2tzkytgttu76,1,id,2026-07-01
+1368540320,262780771,Paket Perawatan Kulit,8,True,False,,mms@id-11134204-822wn-mpj2irgw68ek07,1,id,2026-07-01
+1368540320,262779957,Skin Care,9,True,False,,mms@id-11134204-81ztn-mq2tzkytmg3mbb,1,id,2026-07-01
+1368540320,262781097,Hair Care,4,True,False,,mms@id-11134204-81ztc-mq2tzkytl1j61f,1,id,2026-07-01
+1368540320,262780833,Hair Mask,4,True,False,,id-11134207-8224s-mjezy9r1gwzrcf,1,id,2026-07-01
+1368540320,262782016,New Launch,7,True,False,,mms@id-11134204-81ztk-mq2tzkytnuo2a1,1,id,2026-07-02
+1368540320,258485608,Produk Terlaris,8,True,False,,mms@id-11134204-8224r-mk0oexabl893be,1,id,2026-07-02
+1368540320,258530308,Peeling Serum,3,True,False,,mms@id-11134204-81ztk-mq2tzkyti8ea3f,1,id,2026-07-02
+1368540320,266725540,Ginger Hair Care Serum,3,True,False,,mms@id-11134204-81ztm-mq2tzkytgttu76,1,id,2026-07-02
+1368540320,262780771,Paket Perawatan Kulit,8,True,False,,mms@id-11134204-822wn-mpj2irgw68ek07,1,id,2026-07-02
+1368540320,262779957,Skin Care,9,True,False,,mms@id-11134204-81ztn-mq2tzkytmg3mbb,1,id,2026-07-02
+1368540320,262781097,Hair Care,4,True,False,,mms@id-11134204-81ztc-mq2tzkytl1j61f,1,id,2026-07-02
+1368540320,262780833,Hair Mask,4,True,False,,id-11134207-8224s-mjezy9r1gwzrcf,1,id,2026-07-02
+1368540320,262782016,New Launch,7,True,False,,mms@id-11134204-81ztk-mq2tzkytnuo2a1,1,id,2026-07-03
+1368540320,258485608,Produk Terlaris,8,True,False,,mms@id-11134204-8224r-mk0oexabl893be,1,id,2026-07-03
+1368540320,258530308,Peeling Serum,3,True,False,,mms@id-11134204-81ztk-mq2tzkyti8ea3f,1,id,2026-07-03
+1368540320,266725540,Ginger Hair Care Serum,3,True,False,,mms@id-11134204-81ztm-mq2tzkytgttu76,1,id,2026-07-03
+1368540320,262780771,Paket Perawatan Kulit,8,True,False,,mms@id-11134204-822wn-mpj2irgw68ek07,1,id,2026-07-03
+1368540320,262779957,Skin Care,9,True,False,,mms@id-11134204-81ztn-mq2tzkytmg3mbb,1,id,2026-07-03
+1368540320,262781097,Hair Care,4,True,False,,mms@id-11134204-81ztc-mq2tzkytl1j61f,1,id,2026-07-03
+1368540320,262780833,Hair Mask,4,True,False,,id-11134207-8224s-mjezy9r1gwzrcf,1,id,2026-07-03
