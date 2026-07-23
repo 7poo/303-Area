@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Đề xuất giải pháp phân tích thị trường cho Area 303 — từ dữ liệu sản phẩm đến quyết định giá có kiểm soát.">
+  <title>Đề xuất giải pháp phân tích thị trường | Area 303</title>
+  <style>
+    :root {
+      --ink: #03111f;
+      --navy: #061a2d;
+      --navy-2: #0a2742;
+      --panel: #0b2238;
+      --panel-soft: #102c48;
+      --paper: #f4f8fc;
+      --paper-2: #eaf2f9;
+      --text: #eaf6ff;
+      --muted: #91a9bd;
+      --blue: #08a8ff;
+      --cyan: #38d8ff;
+      --gold: #f5a623;
+      --gold-2: #ffd166;
+      --green: #41d39b;
+      --red: #ff7382;
+      --line: rgba(75, 190, 255, .2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .26);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(8,168,255,.13), transparent 22rem),
+        radial-gradient(circle at 90% 30%, rgba(245,166,35,.08), transparent 25rem),
+        var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: .23;
+      background-image:
+        linear-gradient(rgba(56,216,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,216,255,.07) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 100;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
+      box-shadow: 0 0 18px var(--blue);
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(18px, 4vw, 64px);
+      background: rgba(3,17,31,.82);
+      border-bottom: 1px solid rgba(56,216,255,.14);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
+      background: rgba(245,166,35,.06);
+      font-weight: 900;
+    }
+
+    .brand strong { display: block; color: #fff; }
+    .brand small { display: block; color: var(--muted); font-size: 9px; letter-spacing: .18em; }
+
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .top-actions a, .top-actions button {
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      color: var(--text);
+      border: 1px solid rgba(56,216,255,.25);
+      border-radius: 8px;
+      background: rgba(10,39,66,.65);
+      cursor: pointer;
+    }
+
+    .top-actions .primary {
+      border-color: var(--gold);
+      color: var(--ink);
+      background: var(--gold);
+      font-weight: 750;
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 82px;
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
+      align-items: center;
+      gap: clamp(36px, 7vw, 92px);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -18vw;
+      top: 22%;
+      width: 52vw;
+      height: 52vw;
+      border: 1px solid rgba(56,216,255,.13);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 50px rgba(56,216,255,.018),
+        0 0 0 100px rgba(56,216,255,.012);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      color: var(--gold-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 820px;
+      margin-bottom: 24px;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(234,246,255,.75);
+    }
+
+    .hero-lead {
+      max-width: 700px;
+      color: #b7cad9;
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .hero-lead strong { color: #fff; }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 34px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border: 1px solid rgba(56,216,255,.2);
+      border-radius: 999px;
+      color: #b8d8e9;
+      background: rgba(8,168,255,.06);
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+
+    .buffalo-frame {
+      position: relative;
+      z-index: 2;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(56,216,255,.26);
+      background:
+        radial-gradient(circle, rgba(8,168,255,.15), transparent 62%),
+        linear-gradient(135deg, rgba(245,166,35,.07), transparent 35%);
+      clip-path: polygon(11% 0, 89% 0, 100% 11%, 100% 89%, 89% 100%, 11% 100%, 0 89%, 0 11%);
+      box-shadow: inset 0 0 60px rgba(8,168,255,.08), var(--shadow);
+    }
+
+    .buffalo-frame::before,
+    .buffalo-frame::after {
+      content: "";
+      position: absolute;
+      width: 72%;
+      height: 72%;
+      border: 1px dashed rgba(245,166,35,.24);
+      border-radius: 50%;
+      animation: rotate 28s linear infinite;
+    }
+
+    .buffalo-frame::after {
+      width: 52%;
+      height: 52%;
+      border-color: rgba(56,216,255,.32);
+      animation-direction: reverse;
+      animation-duration: 18s;
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    .buffalo {
+      width: 72%;
+      filter: drop-shadow(0 0 18px rgba(8,168,255,.45));
+    }
+
+    .hero-stat {
+      position: absolute;
+      right: -12px;
+      bottom: 8%;
+      width: 190px;
+      padding: 15px 16px;
+      border: 1px solid rgba(245,166,35,.6);
+      background: rgba(3,17,31,.92);
+      box-shadow: 0 14px 35px rgba(0,0,0,.35);
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: var(--gold-2);
+      font-size: 23px;
+    }
+
+    .hero-stat span { color: var(--muted); font-size: 11px; }
+
+    .section {
+      padding: 104px 0;
+      scroll-margin-top: 72px;
+      border-top: 1px solid rgba(56,216,255,.1);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 28px;
+      margin-bottom: 52px;
+    }
+
+    .section-no {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+
+    .section h2 {
+      max-width: 850px;
+      margin-bottom: 14px;
+      font-size: clamp(32px, 4.2vw, 55px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .section-intro {
+      max-width: 840px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(16,44,72,.72), rgba(6,26,45,.86));
+      box-shadow: 0 18px 45px rgba(0,0,0,.14);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 72px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+    }
+
+    .card.gold::before { background: linear-gradient(90deg, var(--gold), transparent); }
+    .card-number {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .card h3 { margin-bottom: 11px; font-size: 19px; }
+    .card p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .card ul { padding-left: 18px; margin: 16px 0 0; color: #b7cad9; font-size: 13px; }
+    .card li + li { margin-top: 8px; }
+
+    .problem-quote {
+      grid-column: 1 / -1;
+      padding: 30px 34px;
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(90deg, rgba(245,166,35,.1), transparent);
+      font-size: clamp(21px, 2.6vw, 31px);
+      line-height: 1.35;
+    }
+
+    .problem-quote span { color: var(--gold-2); }
+
+    .metric {
+      min-height: 156px;
+      padding: 24px;
+      border: 1px solid rgba(56,216,255,.19);
+      border-radius: 15px;
+      background: rgba(7,29,49,.8);
+    }
+
+    .metric strong {
+      display: block;
+      color: #fff;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: var(--cyan);
+      font-size: 10px;
+    }
+
+    .data-table {
+      width: 100%;
+      margin-top: 22px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(7,29,49,.7);
+    }
+
+    .data-table th, .data-table td {
+      padding: 17px 18px;
+      border-bottom: 1px solid rgba(56,216,255,.1);
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    .data-table th {
+      color: var(--gold-2);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: rgba(245,166,35,.055);
+    }
+
+    .data-table td:first-child { width: 24%; color: #fff; font-weight: 700; }
+    .data-table td:nth-child(2) { width: 38%; color: #bad0df; }
+    .data-table td:last-child { color: var(--muted); }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+    .status.have { color: var(--green); background: rgba(65,211,155,.08); }
+    .status.have::before { background: var(--green); }
+    .status.partial { color: var(--gold-2); background: rgba(245,166,35,.1); }
+    .status.partial::before { background: var(--gold); }
+    .status.need { color: #ff9ba6; background: rgba(255,115,130,.09); }
+    .status.need::before { background: var(--red); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 154px;
+      padding: 20px 17px;
+      border: 1px solid rgba(56,216,255,.22);
+      background: rgba(9,35,57,.78);
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "›";
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      right: -12px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      background: var(--ink);
+      font-size: 18px;
+    }
+
+    .flow-step b {
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      margin-bottom: 22px;
+      border: 1px solid var(--blue);
+      color: var(--cyan);
+      font-size: 11px;
+    }
+
+    .flow-step strong { display: block; font-size: 14px; }
+    .flow-step span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+
+    .gate-list { display: grid; gap: 12px; }
+    .gate {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid rgba(56,216,255,.16);
+      background: rgba(8,30,50,.66);
+    }
+
+    .gate > b {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold-2);
+    }
+
+    .gate strong { display: block; font-size: 14px; }
+    .gate span { display: block; color: var(--muted); font-size: 11px; }
+    .gate em { color: var(--green); font-size: 10px; font-style: normal; letter-spacing: .07em; }
+
+    .formula {
+      padding: 23px;
+      border: 1px solid rgba(245,166,35,.35);
+      background: rgba(245,166,35,.06);
+      color: var(--gold-2);
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .solution-steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .solution-step {
+      display: grid;
+      grid-template-columns: 62px minmax(0, 1.25fr) minmax(240px, .75fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 22px;
+      border: 1px solid rgba(56,216,255,.18);
+      background: linear-gradient(135deg, rgba(12,39,63,.76), rgba(5,24,41,.82));
+    }
+
+    .solution-step > b {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold-2);
+      background: rgba(245,166,35,.05);
+      font-size: 13px;
+    }
+
+    .solution-step h3 {
+      margin: 0 0 7px;
+      font-size: 17px;
+    }
+
+    .solution-step p {
+      margin: 0;
+      color: #b8cad7;
+      font-size: 13px;
+    }
+
+    .solution-step .io {
+      display: grid;
+      gap: 8px;
+      align-content: center;
+      padding-left: 20px;
+      border-left: 1px solid rgba(56,216,255,.15);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .solution-step .io span {
+      display: block;
+    }
+
+    .solution-step .io strong {
+      color: var(--cyan);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .case-study {
+      margin-top: 34px;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid rgba(245,166,35,.42);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 100% 0, rgba(245,166,35,.09), transparent 24rem),
+        rgba(6,26,45,.82);
+    }
+
+    .case-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+
+    .case-title h3 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.15;
+    }
+
+    .case-badge {
+      flex: none;
+      padding: 7px 10px;
+      border: 1px solid rgba(245,166,35,.5);
+      color: var(--gold-2);
+      font-size: 9px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .case-cell {
+      min-height: 150px;
+      padding: 19px;
+      border: 1px solid rgba(56,216,255,.16);
+      background: rgba(4,21,36,.66);
+    }
+
+    .case-cell b {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: .09em;
+    }
+
+    .case-cell strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .case-cell p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .decision-box {
+      margin-top: 14px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      border-left: 3px solid var(--green);
+      background: rgba(65,211,155,.07);
+    }
+
+    .decision-box p {
+      margin: 0;
+      color: #bad0dd;
+      font-size: 13px;
+    }
+
+    .decision-box strong {
+      color: #fff;
+    }
+
+    .decision-box .decision {
+      color: var(--green);
+      font-size: 17px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .rule-table {
+      width: 100%;
+      margin-top: 26px;
+      border-collapse: collapse;
+    }
+
+    .rule-table th, .rule-table td {
+      padding: 14px 16px;
+      border: 1px solid rgba(56,216,255,.12);
+      text-align: left;
+      vertical-align: top;
+      font-size: 11px;
+    }
+
+    .rule-table th {
+      color: var(--gold-2);
+      background: rgba(245,166,35,.06);
+    }
+
+    .rule-table td {
+      color: #b9cbd8;
+      background: rgba(6,26,45,.58);
+    }
+
+    .rule-table td:first-child {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .architecture {
+      position: relative;
+      padding: 32px;
+      border: 1px solid rgba(56,216,255,.24);
+      background: rgba(4,21,36,.8);
+      box-shadow: inset 0 0 80px rgba(8,168,255,.05);
+    }
+
+    .architecture-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .arch-node {
+      min-height: 108px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(56,216,255,.22);
+      background: linear-gradient(145deg, rgba(16,44,72,.88), rgba(5,24,41,.9));
+    }
+
+    .arch-node.gold { border-color: rgba(245,166,35,.46); }
+    .arch-node small { color: var(--cyan); font-size: 9px; letter-spacing: .1em; }
+    .arch-node strong { font-size: 13px; }
+    .arch-node span { color: var(--muted); font-size: 10px; }
+    .arch-arrow { color: var(--gold); text-align: center; font-size: 25px; }
+
+    .architecture-row.main {
+      grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr;
+    }
+
+    .architecture-row.sub {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 18px;
+    }
+
+    .result-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+    }
+
+    .result-main {
+      padding: 34px;
+      border: 1px solid rgba(65,211,155,.25);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(65,211,155,.07), rgba(7,29,49,.82));
+    }
+
+    .result-main h3 { font-size: 24px; }
+    .checks { display: grid; gap: 11px; margin-top: 24px; }
+    .check {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      color: #bfd2df;
+      font-size: 13px;
+    }
+    .check b { color: var(--green); }
+
+    .honest-result {
+      padding: 28px;
+      border: 1px solid rgba(245,166,35,.35);
+      border-radius: var(--radius);
+      background: rgba(245,166,35,.055);
+    }
+
+    .honest-result h3 { color: var(--gold-2); }
+    .honest-result p { color: #b9cbd8; font-size: 13px; }
+    .honest-result strong { color: #fff; }
+
+    .bar-list { display: grid; gap: 14px; margin-top: 22px; }
+    .bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; color: var(--muted); font-size: 10px; }
+    .bar-track { height: 8px; overflow: hidden; background: rgba(255,255,255,.06); border-radius: 10px; }
+    .bar-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .bar-fill.gold { background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
+    .bar-fill.green { background: linear-gradient(90deg, #1a9d77, var(--green)); }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(56,216,255,.2);
+    }
+
+    .phase {
+      min-height: 330px;
+      padding: 27px 23px;
+      border-right: 1px solid rgba(56,216,255,.14);
+      background: rgba(7,29,49,.66);
+    }
+    .phase:last-child { border-right: 0; }
+    .phase:nth-child(2), .phase:nth-child(4) { background: rgba(12,39,63,.72); }
+    .phase b { color: var(--gold); font-size: 11px; letter-spacing: .14em; }
+    .phase h3 { margin: 18px 0 13px; font-size: 17px; }
+    .phase p { color: var(--muted); font-size: 12px; }
+    .phase ul { padding-left: 17px; color: #b9cad7; font-size: 11px; }
+    .phase li + li { margin-top: 8px; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .kpi-card { padding: 28px; border: 1px solid var(--line); background: rgba(7,29,49,.72); }
+    .kpi-card h3 { color: var(--gold-2); }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(56,216,255,.09);
+      color: #bfd0dc;
+      font-size: 12px;
+    }
+    .kpi-row:last-child { border-bottom: 0; }
+    .kpi-row strong { color: #fff; text-align: right; }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      margin: 70px 0 110px;
+      padding: clamp(38px, 7vw, 82px);
+      border: 1px solid rgba(245,166,35,.5);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(8,168,255,.15), transparent 24rem),
+        linear-gradient(135deg, rgba(245,166,35,.09), rgba(6,26,45,.9));
+      box-shadow: var(--shadow);
+    }
+    .closing::after {
+      content: "303";
+      position: absolute;
+      right: 3%;
+      bottom: -22%;
+      color: rgba(56,216,255,.06);
+      font-size: clamp(150px, 25vw, 340px);
+      font-weight: 900;
+      line-height: 1;
+    }
+    .closing h2 { max-width: 850px; font-size: clamp(35px, 5vw, 65px); line-height: 1.04; letter-spacing: -.045em; }
+    .closing p { max-width: 720px; color: #b9cbd8; font-size: 16px; }
+    .closing strong { color: var(--gold-2); }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 28px 0 42px;
+      border-top: 1px solid rgba(56,216,255,.12);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .side-nav {
+      position: fixed;
+      z-index: 30;
+      right: 18px;
+      top: 50%;
+      display: grid;
+      gap: 9px;
+      transform: translateY(-50%);
+    }
+
+    .side-nav a {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(56,216,255,.42);
+      border-radius: 50%;
+      background: var(--ink);
+    }
+    .side-nav a.active { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 11px rgba(245,166,35,.7); }
+    .side-nav a span {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      width: max-content;
+      padding: 5px 8px;
+      transform: translateY(-50%);
+      opacity: 0;
+      pointer-events: none;
+      color: var(--text);
+      background: var(--navy);
+      border: 1px solid var(--line);
+      font-size: 9px;
+      transition: .2s ease;
+    }
+    .side-nav a:hover span { opacity: 1; }
+
+    .note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-left: 2px solid var(--cyan);
+      color: var(--muted);
+      background: rgba(8,168,255,.05);
+      font-size: 11px;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 130px; }
+      .buffalo-frame { width: min(580px, 90%); margin: 0 auto; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .flow-step:nth-child(3)::after { display: none; }
+      .roadmap { grid-template-columns: repeat(2, 1fr); }
+      .phase:nth-child(2) { border-right: 0; }
+      .phase:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .result-layout { grid-template-columns: 1fr; }
+      .architecture-row.main { grid-template-columns: 1fr; }
+      .arch-arrow { transform: rotate(90deg); }
+      .architecture-row.sub { grid-template-columns: repeat(2, 1fr); }
+      .solution-step { grid-template-columns: 54px 1fr; }
+      .solution-step .io { grid-column: 2; padding: 14px 0 0; border-left: 0; border-top: 1px solid rgba(56,216,255,.15); }
+      .case-grid { grid-template-columns: repeat(2, 1fr); }
+      .side-nav { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 28px, 1240px); }
+      .topbar { height: 62px; padding: 0 14px; }
+      .brand small { display: none; }
+      .top-actions a { display: none; }
+      .top-actions button { padding: 0 10px; font-size: 11px; }
+      .hero { min-height: auto; padding: 112px 0 60px; }
+      .hero-stat { right: -5px; width: 160px; }
+      .section { padding: 76px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 9px; margin-bottom: 34px; }
+      .grid-2, .grid-3, .grid-4, .kpi-grid { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { top: auto; right: 50%; bottom: -12px; transform: translateX(50%) rotate(90deg); }
+      .flow-step:nth-child(3)::after { display: grid; }
+      .gate { grid-template-columns: 45px 1fr; }
+      .gate em { grid-column: 2; }
+      .data-table { display: block; overflow-x: auto; }
+      .roadmap { grid-template-columns: 1fr; }
+      .phase { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .architecture { padding: 18px; }
+      .architecture-row.sub { grid-template-columns: 1fr; }
+      .solution-step { grid-template-columns: 45px 1fr; gap: 14px; padding: 17px; }
+      .solution-step > b { width: 40px; height: 40px; }
+      .case-title, .decision-box { grid-template-columns: 1fr; display: grid; }
+      .case-grid { grid-template-columns: 1fr; }
+      .decision-box .decision { text-align: left; }
+      .rule-table { display: block; overflow-x: auto; }
+      .footer { flex-direction: column; }
+    }
+
+    @media print {
+      :root { --text: #10233a; --muted: #52687a; }
+      body { background: #fff; color: #10233a; }
+      body::before, .progress, .topbar, .side-nav, .buffalo-frame::before, .buffalo-frame::after { display: none; }
+      .page { width: 100%; }
+      .hero { min-height: auto; padding: 36px 0; page-break-after: always; }
+      .section { padding: 32px 0; break-inside: avoid; }
+      .card, .metric, .architecture, .flow-step, .arch-node, .phase, .kpi-card, .result-main, .honest-result,
+      .solution-step, .case-study, .case-cell, .decision-box, .rule-table td {
+        color: #10233a;
+        background: #f4f8fc !important;
+        border-color: #b7cad9;
+        box-shadow: none;
+      }
+      .card p, .card li, .flow-step span, .arch-node span, .phase p, .phase ul, .section-intro, .hero-lead, .honest-result p,
+      .solution-step p, .solution-step .io, .case-cell p, .decision-box p, .rule-table td { color: #52687a; }
+      .case-cell strong, .decision-box strong, .rule-table td:first-child { color: #10233a !important; }
+      h1 span { color: #10233a; -webkit-text-stroke: 0; }
+      .closing { margin: 30px 0; background: #eef4f9; box-shadow: none; }
+      .closing::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Về đầu trang">
+      <span class="brand-mark">303</span>
+      <span><strong>Phân tích thị trường</strong><small>Area 303 · Sân chơi Buffalo</small></span>
+    </a>
+    <div class="top-actions">
+      <a href="http://localhost:5173/#sku" target="_blank" rel="noreferrer">Mở hệ thống thử nghiệm ↗</a>
+      <button class="primary" type="button" onclick="window.print()">Xuất PDF</button>
+    </div>
+  </header>
+
+  <nav class="side-nav" aria-label="Điều hướng proposal">
+    <a href="#top" class="active"><span>Mở đầu</span></a>
+    <a href="#problem"><span>Bài toán</span></a>
+    <a href="#data"><span>Dữ liệu</span></a>
+    <a href="#approach"><span>Cách giải</span></a>
+    <a href="#build"><span>Hệ thống</span></a>
+    <a href="#results"><span>Kết quả</span></a>
+    <a href="#roadmap"><span>Lộ trình</span></a>
+    <a href="#kpi"><span>KPI</span></a>
+  </nav>
+
+  <main>
+    <section class="page hero" id="top">
+      <div>
+        <p class="eyebrow">Đề 3 · Phân tích thị trường</p>
+        <h1>So sánh đúng sản phẩm <span>để đưa ra quyết định đúng.</span></h1>
+        <p class="hero-lead">
+          Giải pháp xác định sản phẩm nào thực sự có thể so sánh, quy đổi giá về cùng quy cách,
+          đánh giá mức độ đáng tin của tín hiệu và chỉ đề xuất thay đổi khi
+          <strong>giá mới vẫn bảo đảm mức lợi nhuận tối thiểu</strong>.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Ghép đúng sản phẩm</span>
+          <span class="tag">Quy đổi đúng đơn vị</span>
+          <span class="tag">Theo dõi giá và khuyến mãi</span>
+          <span class="tag">Bảo vệ biên lợi nhuận</span>
+          <span class="tag">Giải thích được lý do</span>
+        </div>
+      </div>
+
+      <div class="buffalo-frame" aria-label="Biểu tượng trâu số hóa Area 303">
+        <svg class="buffalo" viewBox="0 0 420 360" role="img" aria-label="Trâu cách điệu bằng đường mạch điện">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f5a623"/>
+              <stop offset=".52" stop-color="#38d8ff"/>
+              <stop offset="1" stop-color="#0878ff"/>
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M198 102C143 56 83 48 30 75c32 1 55 11 72 33-31-9-53-3-69 15 47-7 81 9 103 44"/>
+            <path d="M222 102c55-46 115-54 168-27-32 1-55 11-72 33 31-9 53-3 69 15-47-7-81 9-103 44"/>
+            <path d="M136 142c12-43 38-65 74-65s62 22 74 65l-14 116-60 70-60-70z"/>
+            <path d="M161 133l49 25 49-25M164 217l46 22 46-22M183 281l27 10 27-10"/>
+            <circle cx="177" cy="181" r="8"/><circle cx="243" cy="181" r="8"/>
+            <path d="M210 158v81M137 143l-27 36 28 11M283 143l27 36-28 11"/>
+            <path d="M173 243l-22 24M247 243l22 24"/>
+          </g>
+          <g fill="#38d8ff">
+            <circle cx="30" cy="75" r="5"/><circle cx="390" cy="75" r="5"/>
+            <circle cx="33" cy="123" r="4"/><circle cx="387" cy="123" r="4"/>
+            <circle cx="210" cy="77" r="5"/><circle cx="210" cy="328" r="5"/>
+          </g>
+        </svg>
+        <div class="hero-stat"><strong>Quan sát → Quyết định</strong><span>Mỗi đề xuất phải chỉ ra dữ liệu dùng để so sánh và điều kiện an toàn đi kèm.</span></div>
+      </div>
+    </section>
+
+    <section class="page section" id="problem">
+      <div class="section-head">
+        <div class="section-no">01 / BÀI TOÁN</div>
+        <div>
+          <h2>Giá khác nhau chưa chắc là cơ hội giảm giá.</h2>
+          <p class="section-intro">
+            Cùng một hãng có thể bán qua nhiều nhà phân phối. Mỗi nơi dùng tên sản phẩm, số lượng,
+            quà tặng và chương trình khuyến mãi khác nhau. Vì vậy hệ thống phải trả lời tuần tự bốn câu hỏi
+            trước khi đưa ra bất kỳ đề xuất nào.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <span class="card-number">RỦI RO 01</span>
+          <h3>Có đúng cùng sản phẩm không?</h3>
+          <p>Cần phân biệt hãng, dòng sản phẩm, hương vị, mẫu/phiên bản và đơn vị bán. Tên giống nhau không đủ để kết luận.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">RỦI RO 02</span>
+          <h3>Có đúng cùng quy cách không?</h3>
+          <p>Một gói 303 g không thể so trực tiếp với combo ba gói 303 g. Giá phải được đưa về cùng 100 g, 100 ml hoặc một đơn vị.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">RỦI RO 03</span>
+          <h3>Có nên phản ứng không?</h3>
+          <p>Một nhà bán giảm giá có thể chỉ là biến động riêng lẻ. Cần xét số nguồn xác nhận, độ mới dữ liệu và giá sàn lợi nhuận.</p>
+        </article>
+        <div class="problem-quote">
+          Lời giải cần đi từ nhận diện đến hành động:
+          <span>“So sánh đúng đối tượng → quy đổi đúng giá → đánh giá đủ bằng chứng → tính mức giá an toàn → để con người phê duyệt.”</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page section" id="data">
+      <div class="section-head">
+        <div class="section-no">02 / DỮ LIỆU</div>
+        <div>
+          <h2>Dữ liệu hiện có trả lời được phần nào của bài toán?</h2>
+          <p class="section-intro">
+            Dữ liệu hiện tại đủ để xây lớp nhận diện sản phẩm, theo dõi biến động giá và thử nghiệm
+            quy tắc khuyến nghị. Chưa đủ để khẳng định tác động lên doanh thu hoặc tự động thay đổi giá.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-4">
+        <div class="metric"><strong>3.341</strong><span>lần ghi nhận sản phẩm</span><small>03 ngày quan sát</small></div>
+        <div class="metric"><strong>1.157</strong><span>SKU duy nhất</span><small>20 gian hàng</small></div>
+        <div class="metric"><strong>02</strong><span>thị trường</span><small>Việt Nam · Indonesia</small></div>
+        <div class="metric"><strong>3.531</strong><span>lần thay đổi khuyến mãi</span><small>903 SKU có biến động</small></div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Nhóm dữ liệu</th><th>Đang có</th><th>Cần bổ sung để đi sâu</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sản phẩm & người bán<br><span class="status have">Đã có</span></td>
+            <td>Tên, thương hiệu, danh mục, gian hàng, đơn vị bán, giá bán, giá niêm yết và hình ảnh.</td>
+            <td>Mã sản phẩm chuẩn, mẫu/phiên bản chuẩn và bảng ánh xạ nhà phân phối được nghiệp vụ xác nhận.</td>
+          </tr>
+          <tr>
+            <td>Quy cách & biến thể<br><span class="status partial">Một phần</span></td>
+            <td>Khối lượng, thể tích, số lượng, gói kết hợp và cảnh báo một trang bán có nhiều mức giá.</td>
+            <td>Giá của từng lựa chọn cụ thể, đơn vị chuẩn theo ngành hàng và danh mục sản phẩm gốc.</td>
+          </tr>
+          <tr>
+            <td>Giá & khuyến mãi<br><span class="status have">Đã có</span></td>
+            <td>Giá hiện tại, tỷ lệ giảm, mã giảm giá, thời gian áp dụng và lịch sử thay đổi.</td>
+            <td>Giá thực trả tại bước thanh toán, điều kiện dùng mã và phần chi phí do sàn hoặc nhãn hàng tài trợ.</td>
+          </tr>
+          <tr>
+            <td>Kinh tế đơn vị<br><span class="status need">Cần bổ sung</span></td>
+            <td>Giá vốn mô phỏng theo khoảng hợp lý, chỉ dùng để kiểm thử tình huống.</td>
+            <td>Giá vốn đã xác minh, phí sàn, phí thanh toán, giao nhận, hoàn hàng và biên lợi nhuận tối thiểu.</td>
+          </tr>
+          <tr>
+            <td>Nhu cầu & kết quả<br><span class="status need">Cần bổ sung</span></td>
+            <td>Lượng bán theo tháng và mức quan tâm được sàn công bố, dùng như chỉ báo tham khảo.</td>
+            <td>Đơn hàng, tỷ lệ chuyển đổi, tồn kho, lượt truy cập, quảng cáo và kết quả trước/sau hành động.</td>
+          </tr>
+          <tr>
+            <td>Nhãn kiểm định<br><span class="status partial">Đang xây</span></td>
+            <td>Bộ dữ liệu mô phỏng có đáp án và danh sách cặp sản phẩm để kiểm tra thủ công.</td>
+            <td>200 cặp thật có khóa ổn định, nhãn cảnh báo và phản hồi của nhân viên vận hành về khuyến nghị.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">Giới hạn cần nói rõ: dữ liệu chỉ trải từ 01–03/07/2026. Vì vậy kết quả hiện tại chứng minh cách hệ thống xử lý và tự bảo vệ khi thiếu dữ liệu; chưa đại diện cho thị trường theo thời gian thực.</p>
+    </section>
+
+    <section class="page section" id="approach">
+      <div class="section-head">
+        <div class="section-no">03 / CÁCH GIẢI</div>
+        <div>
+          <h2>Lời giải cụ thể: tám bước từ trang bán đến đề xuất hành động.</h2>
+          <p class="section-intro">
+            Mỗi bước dưới đây tạo ra một đầu ra có thể kiểm tra. Nếu một bước không đủ dữ liệu,
+            hệ thống dừng tại đó và nói rõ phần còn thiếu thay vì tiếp tục suy đoán.
+          </p>
+        </div>
+      </div>
+
+      <div class="solution-steps">
+        <article class="solution-step">
+          <b>01</b>
+          <div>
+            <h3>Xác định doanh nghiệp và đơn vị bán</h3>
+            <p>Mỗi gian hàng được gắn với hai lớp: doanh nghiệp sở hữu thương hiệu và đơn vị trực tiếp bán hàng. Hai chi nhánh Richy vẫn thuộc cùng doanh nghiệp, nhưng là hai đơn vị bán khác nhau nên giá của họ có thể được đối chiếu.</p>
+          </div>
+          <div class="io"><span><strong>Đầu vào</strong>Mã gian hàng, tên gian hàng, quốc gia</span><span><strong>Đầu ra</strong>Mã doanh nghiệp và mã đơn vị bán</span><span><strong>Vì sao</strong>Tránh tự so một gian hàng với chính nó, nhưng không bỏ sót các nhà phân phối cùng hãng.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>02</b>
+          <div>
+            <h3>Tách tên sản phẩm thành các thuộc tính có nghĩa</h3>
+            <p>Tên trang bán được chuẩn hóa để lấy thương hiệu, loại sản phẩm, dòng sản phẩm, vị, mẫu/phiên bản, khối lượng, số lượng và trạng thái gói kết hợp. Các cụm quảng cáo như “giao nhanh”, “mua 3 tặng 1” không được coi là tên sản phẩm.</p>
+          </div>
+          <div class="io"><span><strong>Đầu vào</strong>Tên sản phẩm và lựa chọn biến thể</span><span><strong>Đầu ra</strong>Hồ sơ sản phẩm có cấu trúc</span><span><strong>Vì sao</strong>Máy cần biết hai tên giống nhau ở phần nào và khác nhau ở phần nào.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>03</b>
+          <div>
+            <h3>Loại ngay các cặp chắc chắn không thể so sánh</h3>
+            <p>Hệ thống loại cặp khác quốc gia, khác loại sản phẩm, trùng đơn vị bán, xung đột mẫu/phiên bản hoặc có giá đại diện cho nhiều biến thể chưa xác định. Đây là điều kiện loại trừ bắt buộc, không phụ thuộc điểm giống nhau của câu chữ.</p>
+          </div>
+          <div class="io"><span><strong>Đầu vào</strong>Hai hồ sơ sản phẩm</span><span><strong>Đầu ra</strong>Cặp hợp lệ hoặc lý do bị loại</span><span><strong>Vì sao</strong>Một điểm tương đồng cao không được phép che lấp xung đột về sản phẩm.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>04</b>
+          <div>
+            <h3>Phân loại quan hệ giữa hai sản phẩm</h3>
+            <p>Các cặp còn lại được chấm theo tên, thương hiệu, loại, dòng, vị và quy cách; sau đó xếp vào bốn nhóm: cùng sản phẩm, cùng dòng nhưng khác quy cách, sản phẩm thay thế hoặc không đủ bằng chứng.</p>
+          </div>
+          <div class="io"><span><strong>Đầu vào</strong>Các cặp đã qua điều kiện loại trừ</span><span><strong>Đầu ra</strong>Loại quan hệ, điểm tin cậy và đặc trưng giải thích</span><span><strong>Vì sao</strong>Chỉ nhóm “cùng sản phẩm” mới được dùng làm mốc giá trực tiếp.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>05</b>
+          <div>
+            <h3>Đưa giá về cùng một đơn vị so sánh</h3>
+            <p>Nếu một bên bán một gói và bên kia bán ba gói, giá được quy đổi về 100 g, 100 ml hoặc một đơn vị. Trang bán có nhiều lựa chọn nhưng chỉ có một mức giá đại diện sẽ bị đánh dấu “chưa xác định quy cách”, không tham gia tính mốc giá.</p>
+          </div>
+          <div class="io"><span><strong>Công thức</strong>Giá chuẩn hóa = Giá bán ÷ Tổng quy cách</span><span><strong>Đầu ra</strong>Giá trên 100 g, 100 ml hoặc mỗi đơn vị</span><span><strong>Vì sao</strong>So sánh tổng tiền của hai gói hàng khác lượng sẽ dẫn tới kết luận sai.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>06</b>
+          <div>
+            <h3>Tạo mốc giá thị trường và đánh giá độ tin cậy</h3>
+            <p>Mỗi đơn vị bán chỉ đóng góp một mức giá trung vị để tránh một nhà bán đăng nhiều trang rồi làm lệch thị trường. Mốc chính là trung vị của các đơn vị bán có sản phẩm tương đương. Nếu không có, hệ thống chỉ hiển thị lịch sử của chính SKU hoặc giá niêm yết để tham khảo.</p>
+          </div>
+          <div class="io"><span><strong>Ưu tiên</strong>Trung vị thị trường → trung vị lịch sử → giá niêm yết</span><span><strong>Đầu ra</strong>Mốc giá, số nguồn và mức tin cậy</span><span><strong>Vì sao</strong>Một nguồn đơn lẻ không nên đại diện cho cả thị trường.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>07</b>
+          <div>
+            <h3>Tính giá sàn an toàn trước khi đề xuất</h3>
+            <p>Giá sàn không chỉ dựa vào giá vốn. Nó phải bù giá vốn, phí sàn, phí thanh toán, giao nhận, chi phí hoàn hàng kỳ vọng và biên lợi nhuận tối thiểu. Nếu thiếu các đầu vào đã xác minh, hệ thống chỉ cho phép mô phỏng.</p>
+          </div>
+          <div class="io"><span><strong>Công thức</strong>Giá sàn = (Giá vốn + chi phí cố định) ÷ (1 − tỷ lệ phí − biên tối thiểu)</span><span><strong>Đầu ra</strong>Mức giá thấp nhất được phép</span><span><strong>Vì sao</strong>Giá cạnh tranh nhưng tạo lỗ không phải là một khuyến nghị tốt.</span></div>
+        </article>
+
+        <article class="solution-step">
+          <b>08</b>
+          <div>
+            <h3>Chọn hành động, yêu cầu phê duyệt và đo kết quả</h3>
+            <p>Bộ quy tắc chọn một trong bốn hướng: giữ giá, giảm giá, dùng mã giảm hoặc chỉ theo dõi. Hệ thống trình bày lý do, dữ liệu so sánh và điều kiện còn thiếu. Con người quyết định cuối cùng; sau 1, 3 hoặc 7 ngày, kết quả được ghi lại để đánh giá.</p>
+          </div>
+          <div class="io"><span><strong>Đầu ra</strong>Hành động, mức đề xuất, lý do và độ tin cậy</span><span><strong>Kiểm soát</strong>Không tự động đổi giá ở giai đoạn hiện tại</span><span><strong>Vì sao</strong>Quyết định cần trách nhiệm, dấu vết và phản hồi thực tế.</span></div>
+        </article>
+      </div>
+
+      <div class="case-study">
+        <div class="case-title">
+          <div>
+            <p class="eyebrow">Ví dụ xuyên suốt</p>
+            <h3>Bánh gạo Richy 303 g: cùng hãng, khác nhà phân phối, giá khác nhau.</h3>
+          </div>
+          <span class="case-badge">Số liệu minh họa cách tính</span>
+        </div>
+
+        <div class="case-grid">
+          <div class="case-cell"><b>BƯỚC 1 · NHẬN DIỆN</b><strong>Richy miền Bắc ↔ Richy miền Nam</strong><p>Cùng doanh nghiệp Richy Việt Nam; khác đơn vị bán nên được phép đối chiếu.</p></div>
+          <div class="case-cell"><b>BƯỚC 2 · SẢN PHẨM</b><strong>Cùng bánh gạo Jinju 303 g</strong><p>Cùng loại, dòng và tổng khối lượng. Phần “tặng quạt” hoặc “mua 3 tặng 1” được tách khỏi danh tính sản phẩm.</p></div>
+          <div class="case-cell"><b>BƯỚC 3 · QUY ĐỔI</b><strong>48.000 đ ↔ 42.000 đ</strong><p>Cả hai đều 303 g nên giá chuẩn hóa lần lượt khoảng 15.842 đ và 13.861 đ trên 100 g.</p></div>
+          <div class="case-cell"><b>BƯỚC 4 · MỐC THỊ TRƯỜNG</b><strong>42.000 đ là mốc đối chiếu</strong><p>Trong ví dụ này mới có một đơn vị bán đối chiếu, vì vậy mức tin cậy chỉ ở mức thấp và cần ghi rõ.</p></div>
+          <div class="case-cell"><b>BƯỚC 5 · GIÁ SÀN</b><strong>Khoảng 39.800 đ</strong><p>Giá vốn 28.000 đ + 3.000 đ chi phí cố định; phí biến đổi 12%; yêu cầu lợi nhuận tối thiểu 10%.</p></div>
+          <div class="case-cell"><b>BƯỚC 6 · KIỂM TRA</b><strong>42.000 đ cao hơn giá sàn</strong><p>Có dư địa giảm từ 48.000 đ về 42.000 đ mà vẫn không vi phạm điều kiện lợi nhuận trong kịch bản.</p></div>
+        </div>
+
+        <div class="decision-box">
+          <p><strong>Kết luận của hệ thống:</strong> chênh lệch 12,5% đã vượt ngưỡng xem xét 10%; có thể đề xuất kịch bản giảm về 42.000 đ. Tuy nhiên độ tin cậy vẫn thấp vì mới có một đơn vị bán đối chiếu. Nếu giá vốn hoặc điều kiện phí chưa được xác minh, kết quả phải mang nhãn “mô phỏng — chưa được thực thi”.</p>
+          <div class="decision">ĐỀ XUẤT CÓ ĐIỀU KIỆN</div>
+        </div>
+        <p class="note">Ví dụ này mô tả lời giải hoàn chỉnh được đề xuất. Phiên bản thử nghiệm hiện mới tính giá vốn và biên lợi nhuận gộp; phí sàn, giao nhận và hoàn hàng là nhóm dữ liệu cần nối thêm trước khi áp dụng công thức giá sàn đầy đủ.</p>
+
+        <table class="rule-table">
+          <thead><tr><th>Tình huống</th><th>Hệ thống làm gì?</th><th>Lý do</th></tr></thead>
+          <tbody>
+            <tr><td>Giá của ta cao hơn mốc thị trường dưới 10%</td><td>Giữ nguyên giá và tiếp tục theo dõi.</td><td>Chênh lệch nhỏ chưa đủ để bù rủi ro phản ứng theo biến động ngắn hạn.</td></tr>
+            <tr><td>Giá của ta cao hơn từ 10% và giá mục tiêu vẫn trên giá sàn</td><td>Tạo kịch bản giảm về gần trung vị thị trường.</td><td>Đã có khoảng chênh đáng kể và phương án vẫn bảo vệ lợi nhuận.</td></tr>
+            <tr><td>Khác khối lượng nhưng quy đổi được</td><td>So sánh theo giá trên 100 g/100 ml.</td><td>Đưa hai gói hàng về cùng mặt bằng.</td></tr>
+            <tr><td>Trang bán có nhiều biến thể nhưng không rõ giá thuộc biến thể nào</td><td>Chặn so sánh giá trực tiếp.</td><td>Không biết mức giá đang đại diện cho quy cách nào.</td></tr>
+            <tr><td>Chỉ là sản phẩm thay thế</td><td>Chỉ tạo tín hiệu theo dõi, không dùng làm giá mục tiêu.</td><td>Sản phẩm thay thế có thể phục vụ nhu cầu giống nhau nhưng cấu trúc giá khác nhau.</td></tr>
+            <tr><td>Giá thị trường thấp hơn giá sàn</td><td>Giữ giá và cảnh báo không đủ dư địa lợi nhuận.</td><td>Không đánh đổi lợi nhuận để chạy theo đối thủ.</td></tr>
+            <tr><td>Thiếu giá vốn hoặc điều kiện khuyến mãi</td><td>Chỉ mô phỏng, yêu cầu bổ sung dữ liệu.</td><td>Không thể chứng minh hành động là an toàn.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="page section" id="build">
+      <div class="section-head">
+        <div class="section-no">04 / XÂY DỰNG</div>
+        <div>
+          <h2>Những thành phần được xây dựng để thực hiện tám bước trên.</h2>
+          <p class="section-intro">
+            Hệ thống được chia thành các lớp có trách nhiệm rõ ràng. Mỗi lớp lưu lại dữ liệu đầu vào,
+            phiên bản xử lý và kết quả để người dùng có thể truy ngược vì sao một cảnh báo hoặc đề xuất xuất hiện.
+          </p>
+        </div>
+      </div>
+
+      <div class="architecture">
+        <div class="architecture-row main">
+          <div class="arch-node"><small>01 · DỮ LIỆU VÀO</small><strong>Dữ liệu từ sàn</strong><span>Sản phẩm · giá · khuyến mãi · đơn vị bán</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><small>02 · NỀN DỮ LIỆU</small><strong>Nạp và kiểm tra dữ liệu</strong><span>Kho phân tích · nhật ký chạy · kiểm tra chất lượng</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node gold"><small>03 · PHÂN TÍCH</small><strong>Ghép sản phẩm và tạo tín hiệu</strong><span>Quan hệ sản phẩm · chênh lệch · áp lực</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node gold"><small>04 · QUYẾT ĐỊNH</small><strong>Quy tắc và điều kiện an toàn</strong><span>Kịch bản · giá sàn · từ chối khi thiếu chứng cứ</span></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><small>05 · GIAO DIỆN</small><strong>API · Trợ lý AI · Trang phân tích</strong><span>Bằng chứng · khuyến nghị · phê duyệt</span></div>
+        </div>
+        <div class="architecture-row sub">
+          <div class="arch-node"><small>QUY ƯỚC DỮ LIỆU</small><strong>Danh mục doanh nghiệp và đơn vị bán</strong><span>Phân biệt hãng với nhà phân phối</span></div>
+          <div class="arch-node"><small>KIỂM ĐỊNH MÔ HÌNH</small><strong>Dữ liệu mô phỏng có đáp án</strong><span>Cặp dễ nhầm · thiếu dữ liệu · giá ngoại lệ</span></div>
+          <div class="arch-node"><small>AN TOÀN</small><strong>Trợ lý chỉ được đọc dữ liệu</strong><span>Phạm vi · xác thực · giới hạn truy cập · nhật ký</span></div>
+          <div class="arch-node"><small>BƯỚC TIẾP THEO</small><strong>Hồ sơ quyết định và kết quả</strong><span>Phê duyệt · thực hiện · đo lường · học lại</span></div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:22px">
+        <article class="card"><span class="card-number">THÀNH PHẦN 01–02</span><h3>Nền dữ liệu và ghép sản phẩm</h3><p>Chuẩn hóa dữ liệu, tách thuộc tính, tạo cặp ứng viên rồi phân loại quan hệ giữa hai sản phẩm.</p></article>
+        <article class="card"><span class="card-number">THÀNH PHẦN 03–04</span><h3>Tín hiệu và khuyến nghị</h3><p>Tính chênh lệch giá, biến động khuyến mãi, mức tin cậy; chỉ đưa ra hành động khi vượt qua điều kiện an toàn.</p></article>
+        <article class="card"><span class="card-number">THÀNH PHẦN 05–06</span><h3>Dịch vụ dữ liệu và giao diện quyết định</h3><p>Trang phân tích SKU, trung tâm cảnh báo, khu vực khuyến nghị và trợ lý AI hiểu sản phẩm đang xem.</p></article>
+      </div>
+
+      <p class="eyebrow" style="margin-top:42px">Căn cứ để lựa chọn cách xây dựng</p>
+      <div class="grid-4">
+        <article class="card gold"><span class="card-number">NGUYÊN TẮC 01</span><h3>Ghép thực thể theo mô hình lai</h3><p>Độ giống của câu chữ dùng để tìm ứng viên; thuộc tính có cấu trúc và quy tắc nghiệp vụ quyết định cặp nào được phép so sánh. Cách này vừa có độ phủ, vừa hạn chế ghép sai.</p></article>
+        <article class="card gold"><span class="card-number">NGUYÊN TẮC 02</span><h3>Thống kê bền vững trước ngoại lệ</h3><p>Dùng trung vị theo từng đơn vị bán thay vì trung bình trên mọi trang đăng. Một nhà bán có nhiều trang hoặc một mức giá bất thường sẽ ít làm lệch mốc thị trường hơn.</p></article>
+        <article class="card gold"><span class="card-number">NGUYÊN TẮC 03</span><h3>Ra quyết định dưới ràng buộc</h3><p>Hệ thống không chỉ tối ưu mức giá cạnh tranh; mọi phương án phải vượt qua giá sàn, dữ liệu phải đủ mới và điều kiện khuyến mãi phải được xác minh.</p></article>
+        <article class="card gold"><span class="card-number">NGUYÊN TẮC 04</span><h3>Con người chịu trách nhiệm cuối cùng</h3><p>AI giải thích và tổng hợp bằng chứng. Quyền phê duyệt vẫn thuộc nhân viên vận hành; phản hồi sau quyết định trở thành dữ liệu để hiệu chỉnh hệ thống.</p></article>
+      </div>
+    </section>
+
+    <section class="page section" id="results">
+      <div class="section-head">
+        <div class="section-no">05 / KẾT QUẢ</div>
+        <div>
+          <h2>Kết quả hiện tại: đã có nền phân tích, nhưng chưa đủ dữ liệu để tự động ra quyết định.</h2>
+          <p class="section-intro">
+            Phiên bản thử nghiệm đã chạy trọn chuỗi từ dữ liệu thô đến màn hình phân tích. Kết quả cho thấy
+            các điều kiện an toàn hoạt động, đồng thời chỉ ra rõ phần dữ liệu và mô hình cần hoàn thiện.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-4">
+        <div class="metric"><strong>38/38</strong><span>kiểm thử tự động đạt</span><small>Backend rules & data logic</small></div>
+        <div class="metric"><strong>381</strong><span>SKU có sản phẩm đối chiếu tiềm năng</span><small>761 SKU được kết luận là chưa đủ bằng chứng</small></div>
+        <div class="metric"><strong>267</strong><span>cảnh báo ở lần ghi nhận mới nhất</span><small>mỗi cảnh báo có đối tượng và dữ liệu giải thích</small></div>
+        <div class="metric"><strong>05</strong><span>SKU có mốc giá thị trường tương đương</span><small>chỉ nhóm này đủ điều kiện so giá trực tiếp</small></div>
+      </div>
+
+      <div class="result-layout" style="margin-top:22px">
+        <div class="result-main">
+          <p class="eyebrow">Những gì đã chứng minh được</p>
+          <h3>Ưu tiên kết luận đúng hơn là tạo thật nhiều khuyến nghị.</h3>
+          <div class="checks">
+            <div class="check"><b>✓</b><span>Cùng hãng nhưng khác nhà phân phối được phép so sánh; cùng đơn vị bán bị loại.</span></div>
+            <div class="check"><b>✓</b><span>Giá được chuẩn hóa theo 100 g, 100 ml hoặc mỗi đơn vị; trang bán đa biến thể chưa rõ giá bị chặn.</span></div>
+            <div class="check"><b>✓</b><span>Mốc giá thị trường, lịch sử của chính SKU và giá niêm yết được tách riêng về ý nghĩa.</span></div>
+            <div class="check"><b>✓</b><span>Giá vốn mô phỏng chỉ tạo tình huống thử nghiệm, không trở thành đề xuất được phép thực hiện.</span></div>
+            <div class="check"><b>✓</b><span>Giao diện đã đóng gói thành công; dịch vụ và trợ lý giữ quyền chỉ đọc dữ liệu.</span></div>
+          </div>
+        </div>
+
+        <div class="honest-result">
+          <p class="eyebrow">Giới hạn cần công bố rõ</p>
+          <h3>Chưa sẵn sàng để vận hành tự động.</h3>
+          <p>Hiện có <strong>0 khuyến nghị được phép thực hiện cho Richy</strong>. Nguyên nhân không phải hệ thống “không hoạt động”, mà vì dữ liệu mới có ba ngày, ít sản phẩm tương đương, giá vốn chưa xác minh và điều kiện khuyến mãi chưa đầy đủ.</p>
+          <p>Bộ kiểm thử mô phỏng chặn đúng <strong>100% trường hợp trang bán có nhiều mức giá</strong>, nhưng độ chính xác phân loại quan hệ ở vị trí đầu mới đạt <strong>48,27%</strong>; 388 cặp dễ nhầm vẫn bị coi sai là cùng sản phẩm.</p>
+          <div class="bar-list">
+            <div><div class="bar-label"><span>Chặn trang bán đa giá không rõ quy cách</span><b>100%</b></div><div class="bar-track"><div class="bar-fill green" style="width:100%"></div></div></div>
+            <div><div class="bar-label"><span>Độ chính xác quan hệ trên dữ liệu mô phỏng</span><b>48,27%</b></div><div class="bar-track"><div class="bar-fill gold" style="width:48.27%"></div></div></div>
+            <div><div class="bar-label"><span>Cặp dữ liệu thật đã được gán nhãn lại</span><b>0/200</b></div><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Bộ dữ liệu mô phỏng là phép kiểm thử chủ đích, không đại diện cho độ chính xác ngoài thị trường. Nó được dùng để phát hiện lỗi phân biệt mẫu và phiên bản trước khi lỗi đó ảnh hưởng đến quyết định thật.</p>
+    </section>
+
+    <section class="page section" id="roadmap">
+      <div class="section-head">
+        <div class="section-no">06 / LỘ TRÌNH</div>
+        <div>
+          <h2>Từ nền phân tích hiện tại đến quy trình quyết định khép kín.</h2>
+          <p class="section-intro">Thứ tự triển khai được chọn theo rủi ro: dữ liệu phải mới và đúng trước, mô hình phải được kiểm định sau đó mới mở rộng hành động.</p>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <article class="phase">
+          <b>GIAI ĐOẠN 01 · ƯU TIÊN 0</b><h3>Nền vận hành ổn định</h3>
+          <p>Bảo đảm dữ liệu và dịch vụ luôn ở trạng thái có thể kiểm tra.</p>
+          <ul><li>Lịch nạp dữ liệu và cam kết độ mới</li><li>Công bố dữ liệu theo phiên bản nguyên vẹn</li><li>Kiểm tra sức khỏe và tự khởi động lại</li><li>Xác thực, phân quyền doanh nghiệp và giám sát</li></ul>
+        </article>
+        <article class="phase">
+          <b>GIAI ĐOẠN 02 · ƯU TIÊN 1</b><h3>Chất lượng ghép sản phẩm</h3>
+          <p>Chứng minh đúng sản phẩm trước khi đề xuất giá.</p>
+          <ul><li>Điều kiện loại trừ mẫu/phiên bản</li><li>Gán lại 200 cặp thật bằng khóa ổn định</li><li>Ngưỡng riêng theo ngành hàng</li><li>Kiểm tra và hiệu chỉnh cảnh báo</li></ul>
+        </article>
+        <article class="phase">
+          <b>GIAI ĐOẠN 03 · ƯU TIÊN 1</b><h3>Quy trình ra quyết định</h3>
+          <p>Biến tín hiệu thành hồ sơ có người chịu trách nhiệm.</p>
+          <ul><li>Công cụ thử các kịch bản giá</li><li>Lợi nhuận sau toàn bộ chi phí</li><li>Phê duyệt, từ chối và phản hồi</li><li>Kế hoạch hành động và nhật ký</li></ul>
+        </article>
+        <article class="phase">
+          <b>GIAI ĐOẠN 04 · ƯU TIÊN 2</b><h3>Kết quả và học lại</h3>
+          <p>Đo kết quả thực tế và hiệu chỉnh bộ quy tắc.</p>
+          <ul><li>So sánh trước và sau hành động</li><li>Tỷ lệ chấp nhận và mức cải thiện</li><li>Mở rộng sang tồn kho và quảng cáo</li><li>Kết nối thực thi có phê duyệt</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="page section" id="kpi">
+      <div class="section-head">
+        <div class="section-no">07 / ĐO LƯỜNG</div>
+        <div>
+          <h2>Thành công được đo bằng quyết định tốt hơn, không phải nhiều biểu đồ hơn.</h2>
+          <p class="section-intro">Chỉ số được chia thành bốn lớp để không đánh đồng độ chính xác của mô hình với giá trị kinh doanh thực tế.</p>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <h3>Dữ liệu & mô hình</h3>
+          <div class="kpi-row"><span>Độ trễ của dữ liệu</span><strong>≤ 24 giờ</strong></div>
+          <div class="kpi-row"><span>Tỷ lệ sản phẩm đối chiếu đầu tiên là đúng</span><strong>≥ 80%</strong></div>
+          <div class="kpi-row"><span>Xung đột quy cách lọt vào so sánh trực tiếp</span><strong>0%</strong></div>
+          <div class="kpi-row"><span>Tỷ lệ công bố dữ liệu thành công</span><strong>≥ 99%</strong></div>
+        </div>
+        <div class="kpi-card">
+          <h3>Cảnh báo</h3>
+          <div class="kpi-row"><span>Tỷ lệ cảnh báo được nghiệp vụ xác nhận là đúng</span><strong>≥ 80%</strong></div>
+          <div class="kpi-row"><span>Cảnh báo độ tin cậy thấp chỉ từ một đơn vị bán</span><strong>Không đưa vào nhóm nổi bật</strong></div>
+          <div class="kpi-row"><span>Cảnh báo được xử lý đúng thời hạn</span><strong>≥ 90%</strong></div>
+          <div class="kpi-row"><span>Cảnh báo trùng lặp</span><strong>&lt; 3%</strong></div>
+        </div>
+        <div class="kpi-card">
+          <h3>Vận hành quyết định</h3>
+          <div class="kpi-row"><span>Thời gian từ phát hiện đến quyết định</span><strong>Giảm ≥ 50%</strong></div>
+          <div class="kpi-row"><span>Tỷ lệ khuyến nghị được chấp nhận</span><strong>Theo ngành hàng</strong></div>
+          <div class="kpi-row"><span>Hồ sơ quyết định có đủ bằng chứng</span><strong>100%</strong></div>
+          <div class="kpi-row"><span>Hành động có nhật ký truy vết</span><strong>100%</strong></div>
+        </div>
+        <div class="kpi-card">
+          <h3>Kinh doanh</h3>
+          <div class="kpi-row"><span>Vi phạm biên lợi nhuận tối thiểu</span><strong>0</strong></div>
+          <div class="kpi-row"><span>Vị thế giá so với thị trường</span><strong>Theo ngành hàng</strong></div>
+          <div class="kpi-row"><span>Lợi nhuận/tỷ lệ chuyển đổi trước–sau</span><strong>Đo theo kết quả</strong></div>
+          <div class="kpi-row"><span>Mức cải thiện do hành động tạo ra</span><strong>Chỉ công bố khi đủ thiết kế đo</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page closing">
+      <p class="eyebrow">Kết luận đề xuất</p>
+      <h2>Không chạy theo mức giá thấp nhất. Chỉ phản ứng khi so sánh đúng và vẫn có lợi nhuận.</h2>
+      <p>
+        Giá trị của giải pháp nằm ở khả năng nối liền <strong>sản phẩm → nhà phân phối → quy cách → tín hiệu →
+        điều kiện an toàn → quyết định → kết quả</strong>. Phiên bản hiện tại đã xây được nền phân tích và cơ chế tự dừng khi thiếu bằng chứng;
+        bước tiếp theo là hoàn thiện kiểm định bằng dữ liệu thật, bổ sung toàn bộ chi phí và đo kết quả sau hành động.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Giải thích được</span><span class="tag">Con người quyết định cuối cùng</span>
+        <span class="tag">Bảo vệ lợi nhuận</span><span class="tag">Bằng chứng đi trước hành động</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page footer">
+    <span>Area 303 · Đề bài số 3 · Đề xuất giải pháp phân tích thị trường</span>
+    <span>Dữ liệu thử nghiệm đến 03/07/2026 · Tài liệu cập nhật 23/07/2026</span>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const navLinks = [...document.querySelectorAll('.side-nav a')];
+    const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    const updatePageState = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+      let active = 0;
+      sections.forEach((section, index) => {
+        if (section.getBoundingClientRect().top <= window.innerHeight * .42) active = index;
+      });
+      navLinks.forEach((link, index) => link.classList.toggle('active', index === active));
+    };
+
+    window.addEventListener('scroll', updatePageState, { passive: true });
+    window.addEventListener('resize', updatePageState);
+    updatePageState();
+  </script>
+</body>
+</html>

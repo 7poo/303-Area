@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,7 +22,7 @@ import duckdb
 from .pipeline import finish_run, start_run
 
 
-RULE_VERSION = "recommendation-rules-v0.1"
+RULE_VERSION = "recommendation-rules-v0.4-seeded-cost-scenarios"
 DEFAULT_MARGIN_MIN_PCT = 10.0
 
 
@@ -46,6 +47,17 @@ def _round_price(value: float | None) -> float | None:
     return float(round(value / 100.0) * 100)
 
 
+def _round_safe_price(value: float) -> float:
+    """Round a price target upward so rounding cannot breach its floor."""
+    return float(math.ceil(value / 100.0) * 100)
+
+
+def _floor_percent(value: float, decimals: int = 2) -> float:
+    """Truncate a discount cap so display rounding never makes it unsafe."""
+    scale = 10 ** decimals
+    return math.floor(max(0.0, value) * scale + 1e-9) / scale
+
+
 def _confidence(signal_confidence: str | None, has_cost: bool) -> str:
     if signal_confidence == "high" and has_cost:
         return "high"
@@ -54,7 +66,7 @@ def _confidence(signal_confidence: str | None, has_cost: bool) -> str:
     return "low"
 
 
-def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] | None = None) -> dict[str, Any]:
+def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, Any] | None = None) -> dict[str, Any]:
     """Apply the v0.1 rules to one latest market signal."""
     current_price = _number(signal.get("source_price"))
     market_price = _number(signal.get("peer_median_price"))
@@ -66,12 +78,21 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
     peer_count = int(signal.get("peer_count") or 0)
     peer_status = signal.get("peer_status")
     is_outlier = bool(signal.get("is_price_outlier"))
+    benchmark_peer_count = int(signal.get("benchmark_peer_count") or 0)
+    benchmark_best_score = _number(signal.get("benchmark_best_score"))
+    promotion_terms_verified = bool(signal.get("promotion_terms_verified"))
 
     cost = _number(cost_input.get("cost_value")) if cost_input else None
+    cost_source = str(cost_input.get("cost_source") or "verified_input") if cost_input else "missing"
+    is_seeded_cost = cost_source == "seeded_scenario"
     margin_min_pct = _number(cost_input.get("margin_min_pct")) if cost_input else None
     margin_min_pct = DEFAULT_MARGIN_MIN_PCT if margin_min_pct is None else margin_min_pct
-    price_floor = cost * (1.0 + margin_min_pct / 100.0) if cost is not None else None
+    if not 0 <= margin_min_pct < 100:
+        raise ValueError("margin_min_pct phải nằm trong khoảng từ 0 đến dưới 100")
     has_cost = cost is not None and cost > 0
+    # Gross margin = (price - cost) / price.  Therefore the minimum safe
+    # selling price is cost / (1 - required gross-margin rate).
+    price_floor = cost / (1.0 - margin_min_pct / 100.0) if has_cost else None
 
     reasons: list[str] = []
     status = "recommended"
@@ -82,6 +103,25 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
     constraint_status = "verified" if has_cost else "unverified_cost_missing"
 
     if peer_status != "peer_found" or peer_count < 1 or market_price is None:
+        if benchmark_peer_count > 0:
+            return {
+                "status": "monitoring_only",
+                "action": "review_competitors",
+                "priority": "medium" if benchmark_peer_count >= 3 else "low",
+                "confidence": "medium" if (benchmark_best_score or 0) >= 0.70 else "low",
+                "recommended_price": None,
+                "recommended_discount_percent": None,
+                "price_floor": price_floor,
+                "cost_value": cost,
+                "margin_min_pct": margin_min_pct,
+                "estimated_margin_pct": None,
+                "constraint_status": "not_applicable",
+                "reason_codes": ["substitute_benchmark_available", "price_target_not_comparable"],
+                "recommendation_text": (
+                    f"Theo dõi {benchmark_peer_count} sản phẩm thay thế từ đơn vị bán khác. "
+                    "Các sản phẩm này hữu ích để quan sát cạnh tranh nhưng chưa đủ tương đương để làm giá mục tiêu."
+                ),
+            }
         return {
             "status": "insufficient_evidence",
             "action": "no_response",
@@ -95,7 +135,7 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
             "estimated_margin_pct": None,
             "constraint_status": "not_applicable",
             "reason_codes": ["not_enough_evidence"],
-            "recommendation_text": "Chưa có peer đủ tin cậy; không tự động đề xuất thay đổi.",
+            "recommendation_text": "Chưa có đủ sản phẩm đối thủ tương đồng và đáng tin cậy; hệ thống chưa đề xuất thay đổi.",
         }
 
     if is_outlier:
@@ -112,7 +152,7 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
             "estimated_margin_pct": None,
             "constraint_status": "outlier_review_required",
             "reason_codes": ["price_outlier"],
-            "recommendation_text": "Giá nằm ngoài khoảng so sánh; cần kiểm tra dữ liệu trước khi hành động.",
+            "recommendation_text": "Giá hiện tại nằm ngoài khoảng so sánh thông thường; cần kiểm tra lại dữ liệu trước khi hành động.",
         }
 
     if price_gap is not None and price_gap >= 20:
@@ -131,7 +171,7 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
             reasons.append("cost_required_before_price_change")
         elif market_price >= price_floor:
             action = "reduce_price"
-            recommended_price = _round_price(min(current_price, market_price))
+            recommended_price = min(current_price, _round_safe_price(max(market_price, price_floor)))
             reasons.append("target_respects_margin_floor")
         else:
             status = "constraint_blocked"
@@ -148,9 +188,14 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
             action = "hold_price"
             constraint_status = "blocked_cost_missing"
             reasons.append("cost_required_before_voucher")
+        elif not promotion_terms_verified:
+            status = "needs_promotion_validation"
+            action = "hold_price"
+            constraint_status = "blocked_promotion_terms_missing"
+            reasons.append("promotion_terms_required_before_voucher")
         elif current_price and price_floor is not None:
             max_discount = max(0.0, (1.0 - price_floor / current_price) * 100.0)
-            recommended_discount = round(min(target_discount, max_discount), 2)
+            recommended_discount = _floor_percent(min(target_discount, max_discount))
             if recommended_discount > current_discount:
                 action = "use_voucher"
                 reasons.append("voucher_respects_margin_floor")
@@ -167,35 +212,50 @@ def decide_recommendation(signal: dict[str, Any], cost_input: dict[str, float] |
             action = "hold_price"
             constraint_status = "blocked_cost_missing"
             reasons.append("cost_required_before_voucher")
+        elif not promotion_terms_verified:
+            status = "needs_promotion_validation"
+            action = "hold_price"
+            constraint_status = "blocked_promotion_terms_missing"
+            reasons.append("promotion_terms_required_before_voucher")
         elif current_price and price_floor is not None:
             max_discount = max(0.0, (1.0 - price_floor / current_price) * 100.0)
             target_discount = min(90.0, max(current_discount, peer_discount or current_discount))
-            recommended_discount = round(min(target_discount, max_discount), 2)
+            recommended_discount = _floor_percent(min(target_discount, max_discount))
             if recommended_discount > current_discount:
                 action = "use_voucher"
                 reasons.append("voucher_respects_margin_floor")
+            else:
+                status = "constraint_blocked"
+                action = "hold_price"
+                constraint_status = "margin_floor_leaves_no_discount_room"
+                reasons.append("no_safe_discount_room")
 
     if action == "hold_price" and not reasons:
         reasons.append("price_close_to_peer_median")
+
+    if is_seeded_cost and status in {"recommended", "constraint_blocked"}:
+        status = "scenario_only"
+        constraint_status = "seeded_cost_not_verified"
+        reasons.append("seeded_cost_scenario_not_executable")
 
     effective_price = recommended_price
     if action == "use_voucher" and current_price is not None and recommended_discount is not None:
         effective_price = current_price * (1.0 - recommended_discount / 100.0)
     estimated_margin_pct = None
-    if has_cost and effective_price is not None:
-        estimated_margin_pct = round((effective_price / cost - 1.0) * 100.0, 2)
+    if has_cost and effective_price is not None and effective_price > 0:
+        estimated_margin_pct = round((effective_price - cost) / effective_price * 100.0, 2)
 
     text_by_action = {
-        "reduce_price": "Cân nhắc giảm giá về gần median của peer, sau khi duyệt giá sàn.",
-        "use_voucher": "Cân nhắc voucher để thu hẹp chênh lệch discount trong giới hạn margin.",
-        "hold_price": "Giữ giá hiện tại trong khi theo dõi thêm bằng chứng thị trường.",
-        "no_response": "Không tự động thay đổi khi bằng chứng chưa đủ.",
+        "reduce_price": "Cân nhắc điều chỉnh giá về gần mức giá trung vị của nhóm đối thủ, sau khi xác nhận giá sàn.",
+        "use_voucher": "Cân nhắc dùng mã giảm giá để thu hẹp chênh lệch khuyến mãi mà vẫn bảo đảm biên lợi nhuận.",
+        "hold_price": "Giữ nguyên giá hiện tại và tiếp tục theo dõi tín hiệu thị trường.",
+        "no_response": "Chưa đề xuất thay đổi vì bằng chứng hiện tại chưa đủ tin cậy.",
     }
     return {
         "status": status,
         "action": action,
         "priority": priority,
-        "confidence": _confidence(signal.get("signal_confidence"), has_cost),
+        "confidence": "low" if status == "scenario_only" else _confidence(signal.get("signal_confidence"), has_cost and not is_seeded_cost),
         "recommended_price": recommended_price,
         "recommended_discount_percent": recommended_discount,
         "price_floor": price_floor,
@@ -240,17 +300,30 @@ def create_table(conn: duckdb.DuckDBPyConnection) -> None:
     """)
 
 
-def load_costs(cost_file: str | None) -> dict[tuple[str, int, int], dict[str, float]]:
+def load_costs(cost_file: str | None) -> dict[tuple[str, int, int], dict[str, Any]]:
     if not cost_file:
         return {}
-    result: dict[tuple[str, int, int], dict[str, float]] = {}
+    result: dict[tuple[str, int, int], dict[str, Any]] = {}
     with Path(cost_file).open("r", encoding="utf-8-sig", newline="") as handle:
         for row in csv.DictReader(handle):
             try:
                 key = (row["country_code"].strip().lower(), int(row["shop_id"]), int(row["item_id"]))
+                cost_value = float(row["cost_value"])
+                margin_min_pct = float(row.get("margin_min_pct") or DEFAULT_MARGIN_MIN_PCT)
+                if cost_value <= 0:
+                    raise ValueError("cost_value phải lớn hơn 0")
+                if not 0 <= margin_min_pct < 100:
+                    raise ValueError("margin_min_pct phải nằm trong khoảng từ 0 đến dưới 100")
                 result[key] = {
-                    "cost_value": float(row["cost_value"]),
-                    "margin_min_pct": float(row.get("margin_min_pct") or DEFAULT_MARGIN_MIN_PCT),
+                    "cost_value": cost_value,
+                    "margin_min_pct": margin_min_pct,
+                    "cost_low": _number(row.get("cost_low")),
+                    "cost_high": _number(row.get("cost_high")),
+                    "cost_seed_pct": _number(row.get("cost_seed_pct")),
+                    "cost_reference_price": _number(row.get("cost_reference_price")),
+                    "cost_source": str(row.get("cost_source") or "verified_input"),
+                    "cost_confidence": str(row.get("cost_confidence") or "verified"),
+                    "baseline_type": str(row.get("baseline_type") or "unknown"),
                 }
             except (KeyError, TypeError, ValueError) as exc:
                 raise ValueError("Cost CSV cần country_code, shop_id, item_id, cost_value và tùy chọn margin_min_pct") from exc
@@ -276,20 +349,43 @@ def _latest_signals(conn: duckdb.DuckDBPyConnection, shop_id: int | None = None)
 
 def build_recommendations(
     conn: duckdb.DuckDBPyConnection,
-    costs: dict[tuple[str, int, int], dict[str, float]],
+    costs: dict[tuple[str, int, int], dict[str, Any]],
     created_at: datetime,
     shop_id: int | None = None,
 ) -> int:
     signals = _latest_signals(conn, shop_id)
+    benchmark_rows = conn.execute("""
+        SELECT country_code, source_shop_id, source_item_id,
+               COUNT(*) FILTER (WHERE relation = 'substitute')::INTEGER AS benchmark_peer_count,
+               MAX(match_score) FILTER (WHERE relation = 'substitute') AS benchmark_best_score
+        FROM peer_groups
+        WHERE peer_status = 'peer_found'
+        GROUP BY 1, 2, 3
+    """).fetchall()
+    benchmark_by_key = {
+        (str(country), int(source_shop), int(source_item)): {
+            "benchmark_peer_count": int(count or 0),
+            "benchmark_best_score": _number(best_score),
+        }
+        for country, source_shop, source_item, count, best_score in benchmark_rows
+    }
     insert_sql = """
         INSERT INTO recommendations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
     for signal in signals:
         key = (str(signal["country_code"]), int(signal["source_shop_id"]), int(signal["source_item_id"]))
-        decision = decide_recommendation(signal, costs.get(key))
+        signal.update(benchmark_by_key.get(key, {"benchmark_peer_count": 0, "benchmark_best_score": None}))
+        cost_input = costs.get(key)
+        decision = decide_recommendation(signal, cost_input)
         evidence = {
             "peer_count": signal.get("peer_count"),
             "peer_median_price": signal.get("peer_median_price"),
+            "source_list_price": signal.get("source_list_price"),
+            "source_historical_median_price": signal.get("source_historical_median_price"),
+            "source_price_observation_count": signal.get("source_price_observation_count"),
+            "price_baseline_value": signal.get("price_baseline_value"),
+            "price_baseline_type": signal.get("price_baseline_type"),
+            "price_baseline_actionable": signal.get("price_baseline_actionable"),
             "price_gap_pct": signal.get("price_gap_pct"),
             "discount_gap_pct": signal.get("discount_gap_pct"),
             "pressure_score": signal.get("competitive_pressure_score"),
@@ -297,6 +393,10 @@ def build_recommendations(
             "promotion_peer_count": signal.get("promotion_peer_count"),
             "signal_confidence": signal.get("signal_confidence"),
             "signal_model_version": signal.get("model_version"),
+            "benchmark_peer_count": signal.get("benchmark_peer_count"),
+            "benchmark_best_score": signal.get("benchmark_best_score"),
+            "benchmark_usage": "context_only_not_price_target",
+            "cost_assumption": cost_input,
         }
         conn.execute(insert_sql, [
             signal["country_code"], signal["snapshot_date"], signal["source_shop_id"], signal["source_item_id"],

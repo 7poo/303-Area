@@ -19,7 +19,7 @@ services:
       DB_PATH: /warehouse/market.duckdb
     volumes:
       - ./warehouse:/warehouse
-    command: ["python", "-m", "src.matching", "--db-path", "/warehouse/market.duckdb", "--backend", "tfidf", "--top-k", "5", "--review-size", "100"]
+    command: ["python", "-m", "src.matching", "--db-path", "/warehouse/market.duckdb", "--backend", "tfidf", "--top-k", "10", "--review-size", "200"]
 
   market-signals:
     build:
@@ -29,7 +29,7 @@ services:
       DB_PATH: /warehouse/market.duckdb
     volumes:
       - ./warehouse:/warehouse
-    command: ["python", "-m", "src.signals", "--db-path", "/warehouse/market.duckdb", "--min-peer-score", "0.45"]
+    command: ["python", "-m", "src.signals", "--db-path", "/warehouse/market.duckdb", "--min-peer-score", "0.60"]
 
   recommendation-engine:
     build:

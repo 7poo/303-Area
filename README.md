@@ -32,11 +32,11 @@ phạm vi mở rộng tiếp theo.
 - Chọn latest snapshot cho mỗi SKU.
 - Chuẩn hóa tên, brand, product type, trọng lượng, dung tích, số lượng và bundle.
 - Tạo `product_attributes`.
-- Tạo candidate cùng quốc gia/category, khác shop.
+- Tạo candidate cùng quốc gia, cùng category hoặc product type, khác đơn vị bán/nhà phân phối; cùng hãng vẫn được so sánh.
 - Tính hybrid score bằng TF-IDF text vector và structured features.
-- Tạo `product_matches` top-K và `warehouse/matching_review.csv` gồm 100 cặp để gán nhãn thủ công.
-- Initial adjudication đạt `peer_precision@1 = 1,00` và `peer_precision@5 = 0,90` trên 100 cặp.
-- Multilingual semantic backend đã chạy thành công trên DB copy; tạo 503 source matchable ở threshold 0,70.
+- Tạo `product_matches` top-10 và `warehouse/matching_review.csv` tối đa 200 cặp để gán nhãn thủ công.
+- Nhãn legacy không được tái sử dụng khi cặp sản phẩm thay đổi; `pair_key` ổn định được dùng để nối nhãn.
+- Tách benchmark thay thế (ngưỡng 0,60) khỏi phép so giá exact/variant có thể chuẩn hóa quy cách.
 
 Đã hoàn thành Giai đoạn 3 — Market Signals:
 

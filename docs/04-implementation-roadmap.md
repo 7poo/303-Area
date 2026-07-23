@@ -14,15 +14,15 @@
 
 ## Ngày 2 — Product matching
 
-- [x] Chọn latest snapshot và phạm vi candidate cùng quốc gia/category, khác shop.
+- [x] Chọn latest snapshot và phạm vi candidate cùng quốc gia/category, khác đơn vị bán; cho phép cùng hãng khác nhà phân phối.
 - [x] Tạo bộ lọc category/country trước khi matching.
 - [x] Chuẩn hóa brand, trọng lượng, dung tích, số lượng pack và bundle từ tên.
 - [x] Tạo text vector baseline từ `product_name` đã làm sạch.
 - [x] Xây hybrid matching và lưu top-K vào `product_matches`.
-- [x] Tạo bộ đánh giá thủ công 100 cặp SKU tại `warehouse/matching_review.csv`.
-- [x] Có `same_product`, `substitute`, `near_match`, `not_comparable` và `not_enough_evidence`.
-- [x] Initial adjudication 100 cặp và chạy evaluator.
-- [x] Peer Precision@1 = 1,00 và Peer Precision@5 = 0,90 trên review set.
+- [x] Tạo bộ đánh giá thủ công tối đa 200 cặp SKU tại `warehouse/matching_review.csv`.
+- [x] Có `same_product`, `same_product_variant`, `substitute`, `near_match`, `not_comparable` và `not_enough_evidence`.
+- [ ] Adjudicate lại 200 cặp của model v0.4 bằng `pair_key` ổn định.
+- [ ] Công bố precision/recall/F1 sau khi review set mới hoàn tất.
 - [ ] Xác nhận lại bằng reviewer độc lập trước khi dùng làm benchmark chính thức.
 - [ ] Hiệu chỉnh threshold theo nhãn thật.
 - [x] Chạy optional multilingual sentence-transformer backend để so sánh baseline.

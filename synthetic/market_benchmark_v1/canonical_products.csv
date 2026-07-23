@@ -1,0 +1,251 @@
+﻿canonical_product_id,country_code,currency,company_id,brand,family,product_type,flavor,edition,unit_weight_g,regime,latent_base_demand,own_price_elasticity,generator_version,random_seed,is_synthetic
+SYN-VN-0001,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,1,282,seasonal_growth,45.43,-1.745,synthetic-market-v1.0,303,True
+SYN-VN-0002,vn,VND,richy,Richy,Karo,banh_karo,phô mai,1,156,stable_market,79.63,-2.315,synthetic-market-v1.0,303,True
+SYN-VN-0003,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,1,133,promotion_pulse,43.93,-1.112,synthetic-market-v1.0,303,True
+SYN-VN-0004,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,1,266,price_war,23.1,-1.849,synthetic-market-v1.0,303,True
+SYN-VN-0005,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,1,180,stockout,65.88,-1.518,synthetic-market-v1.0,303,True
+SYN-VN-0006,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,1,399,seasonal_growth,57.9,-1.822,synthetic-market-v1.0,303,True
+SYN-VN-0007,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,1,180,stable_market,12.97,-1.569,synthetic-market-v1.0,303,True
+SYN-VN-0008,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,1,180,promotion_pulse,54.63,-1.211,synthetic-market-v1.0,303,True
+SYN-VN-0009,vn,VND,richy,Richy,Kenju,banh_quy,vani,1,186,price_war,51.14,-2.387,synthetic-market-v1.0,303,True
+SYN-VN-0010,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,sô-cô-la,1,330,stockout,51.18,-2.223,synthetic-market-v1.0,303,True
+SYN-VN-0011,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,1,180,seasonal_growth,48.73,-1.778,synthetic-market-v1.0,303,True
+SYN-VN-0012,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,1,220,stable_market,18.98,-1.765,synthetic-market-v1.0,303,True
+SYN-VN-0013,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,1,300,promotion_pulse,20.85,-1.885,synthetic-market-v1.0,303,True
+SYN-VN-0014,vn,VND,richy,Richy,Karo,banh_karo,chà bông,1,156,price_war,64.33,-2.275,synthetic-market-v1.0,303,True
+SYN-ID-0015,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,ceramide,1,50,stockout,41.71,-2.124,synthetic-market-v1.0,303,True
+SYN-VN-0016,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,cốm sữa,1,150,seasonal_growth,54.14,-2.312,synthetic-market-v1.0,303,True
+SYN-VN-0017,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,1,145,stable_market,47.81,-1.597,synthetic-market-v1.0,303,True
+SYN-ID-0018,id,IDR,scora,Scora,Daily UV,sunscreen,centella,1,50,promotion_pulse,45.9,-1.444,synthetic-market-v1.0,303,True
+SYN-VN-0019,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,1,330,price_war,17.76,-1.667,synthetic-market-v1.0,303,True
+SYN-VN-0020,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,1,120,stockout,42.83,-1.838,synthetic-market-v1.0,303,True
+SYN-ID-0021,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,niacinamide,1,80,seasonal_growth,50.87,-2.166,synthetic-market-v1.0,303,True
+SYN-VN-0022,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,1,133,stable_market,40.55,-2.111,synthetic-market-v1.0,303,True
+SYN-VN-0023,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,1,255,promotion_pulse,49.18,-1.385,synthetic-market-v1.0,303,True
+SYN-VN-0024,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,1,170,price_war,12.48,-1.443,synthetic-market-v1.0,303,True
+SYN-VN-0025,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,1,141,stockout,57.43,-1.514,synthetic-market-v1.0,303,True
+SYN-VN-0026,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,1,198,seasonal_growth,84.84,-2.259,synthetic-market-v1.0,303,True
+SYN-VN-0027,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,1,134.4,stable_market,32.7,-1.209,synthetic-market-v1.0,303,True
+SYN-VN-0028,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,1,220,promotion_pulse,18.0,-1.196,synthetic-market-v1.0,303,True
+SYN-VN-0029,vn,VND,richy,Richy,Karo,banh_karo,sô-cô-la,1,26,price_war,18.48,-1.333,synthetic-market-v1.0,303,True
+SYN-VN-0030,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,1,360,stockout,63.73,-1.207,synthetic-market-v1.0,303,True
+SYN-ID-0031,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,1,30,seasonal_growth,64.33,-2.25,synthetic-market-v1.0,303,True
+SYN-ID-0032,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,ceramide,1,80,stable_market,76.72,-2.051,synthetic-market-v1.0,303,True
+SYN-VN-0033,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,1,340,promotion_pulse,30.75,-1.324,synthetic-market-v1.0,303,True
+SYN-VN-0034,vn,VND,richy,Richy,Kenju,banh_quy,vani,1,120,price_war,81.12,-2.088,synthetic-market-v1.0,303,True
+SYN-VN-0035,vn,VND,mondelez,Mondelez,AFC,banh_quy,lúa mì,1,172,stockout,52.03,-1.343,synthetic-market-v1.0,303,True
+SYN-VN-0036,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,1,150,seasonal_growth,59.58,-1.785,synthetic-market-v1.0,303,True
+SYN-ID-0037,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,1,50,stable_market,75.8,-2.295,synthetic-market-v1.0,303,True
+SYN-ID-0038,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,niacinamide,1,80,promotion_pulse,40.47,-2.069,synthetic-market-v1.0,303,True
+SYN-VN-0039,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,1,470,price_war,12.12,-1.672,synthetic-market-v1.0,303,True
+SYN-VN-0040,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,1,300,stockout,81.58,-1.604,synthetic-market-v1.0,303,True
+SYN-ID-0041,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,1,50,seasonal_growth,38.29,-1.707,synthetic-market-v1.0,303,True
+SYN-ID-0042,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,1,17,stable_market,45.06,-1.616,synthetic-market-v1.0,303,True
+SYN-VN-0043,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,1,396,promotion_pulse,12.81,-2.164,synthetic-market-v1.0,303,True
+SYN-ID-0044,id,IDR,scora,Scora,Daily UV,sunscreen,centella,1,80,price_war,22.96,-1.605,synthetic-market-v1.0,303,True
+SYN-VN-0045,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,1,340,stockout,48.01,-2.22,synthetic-market-v1.0,303,True
+SYN-VN-0046,vn,VND,richy,Richy,Karo,banh_karo,sô-cô-la,1,156,seasonal_growth,54.21,-1.802,synthetic-market-v1.0,303,True
+SYN-VN-0047,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,1,134.4,stable_market,50.01,-1.826,synthetic-market-v1.0,303,True
+SYN-VN-0048,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,1,300,promotion_pulse,29.05,-1.171,synthetic-market-v1.0,303,True
+SYN-VN-0049,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,1,300,price_war,48.64,-1.352,synthetic-market-v1.0,303,True
+SYN-VN-0050,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,1,100,stockout,67.98,-1.365,synthetic-market-v1.0,303,True
+SYN-ID-0051,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,centella,1,30,seasonal_growth,64.22,-1.176,synthetic-market-v1.0,303,True
+SYN-ID-0052,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,1,80,stable_market,24.8,-1.356,synthetic-market-v1.0,303,True
+SYN-ID-0053,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,1,100,promotion_pulse,43.83,-1.812,synthetic-market-v1.0,303,True
+SYN-VN-0054,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,1,360,price_war,17.91,-1.554,synthetic-market-v1.0,303,True
+SYN-VN-0055,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,1,145,stockout,63.57,-2.192,synthetic-market-v1.0,303,True
+SYN-ID-0056,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,centella,1,80,seasonal_growth,19.22,-1.384,synthetic-market-v1.0,303,True
+SYN-VN-0057,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,1,360,stable_market,69.7,-1.678,synthetic-market-v1.0,303,True
+SYN-ID-0058,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,1,50,promotion_pulse,69.7,-1.497,synthetic-market-v1.0,303,True
+SYN-VN-0059,vn,VND,mondelez,Mondelez,AFC,banh_quy,phô mai,1,172,price_war,83.69,-1.71,synthetic-market-v1.0,303,True
+SYN-ID-0060,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,1,100,stockout,19.13,-1.559,synthetic-market-v1.0,303,True
+SYN-VN-0061,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,1,266,seasonal_growth,53.02,-1.219,synthetic-market-v1.0,303,True
+SYN-VN-0062,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,1,145,stable_market,81.86,-2.105,synthetic-market-v1.0,303,True
+SYN-VN-0063,vn,VND,orion,Orion,Custas,banh_bong_lan,sô-cô-la,1,141,promotion_pulse,34.45,-1.9,synthetic-market-v1.0,303,True
+SYN-VN-0064,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,1,220,price_war,31.69,-2.361,synthetic-market-v1.0,303,True
+SYN-VN-0065,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,1,150,stockout,53.44,-1.748,synthetic-market-v1.0,303,True
+SYN-ID-0066,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,niacinamide,1,50,seasonal_growth,62.99,-1.734,synthetic-market-v1.0,303,True
+SYN-VN-0067,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,cốm sữa,1,220,stable_market,29.51,-1.571,synthetic-market-v1.0,303,True
+SYN-ID-0068,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,niacinamide,1,100,promotion_pulse,44.31,-1.729,synthetic-market-v1.0,303,True
+SYN-ID-0069,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,1,80,price_war,63.86,-1.804,synthetic-market-v1.0,303,True
+SYN-VN-0070,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,1,172,stockout,49.93,-1.513,synthetic-market-v1.0,303,True
+SYN-VN-0071,vn,VND,richy,Richy,Kenju,banh_quy,dâu,1,220,seasonal_growth,38.05,-1.983,synthetic-market-v1.0,303,True
+SYN-ID-0072,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,1,50,stable_market,51.3,-1.743,synthetic-market-v1.0,303,True
+SYN-ID-0073,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,1,50,promotion_pulse,46.54,-1.183,synthetic-market-v1.0,303,True
+SYN-VN-0074,vn,VND,mondelez,Mondelez,AFC,banh_quy,lúa mì,1,300,price_war,20.46,-2.255,synthetic-market-v1.0,303,True
+SYN-VN-0075,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,1,255,stockout,12.05,-1.691,synthetic-market-v1.0,303,True
+SYN-VN-0076,vn,VND,richy,Richy,Kenju,banh_quy,dâu,1,186,seasonal_growth,48.88,-1.724,synthetic-market-v1.0,303,True
+SYN-ID-0077,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,1,30,stable_market,17.72,-1.687,synthetic-market-v1.0,303,True
+SYN-VN-0078,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,1,134.4,promotion_pulse,52.97,-2.016,synthetic-market-v1.0,303,True
+SYN-VN-0079,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,1,220,price_war,60.67,-1.684,synthetic-market-v1.0,303,True
+SYN-VN-0080,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,1,120,stockout,60.57,-2.334,synthetic-market-v1.0,303,True
+SYN-ID-0081,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,1,80,seasonal_growth,70.11,-2.245,synthetic-market-v1.0,303,True
+SYN-VN-0082,vn,VND,richy,Richy,Karo,banh_karo,chà bông,1,260,stable_market,82.54,-1.436,synthetic-market-v1.0,303,True
+SYN-VN-0083,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,1,145,promotion_pulse,24.1,-2.025,synthetic-market-v1.0,303,True
+SYN-ID-0084,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,1,30,price_war,67.04,-1.642,synthetic-market-v1.0,303,True
+SYN-ID-0085,id,IDR,scora,Scora,Daily UV,sunscreen,centella,1,30,stockout,15.56,-2.185,synthetic-market-v1.0,303,True
+SYN-ID-0086,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,1,50,seasonal_growth,50.85,-1.319,synthetic-market-v1.0,303,True
+SYN-VN-0087,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,1,170,stable_market,49.77,-1.184,synthetic-market-v1.0,303,True
+SYN-ID-0088,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,1,30,promotion_pulse,60.28,-1.831,synthetic-market-v1.0,303,True
+SYN-VN-0089,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,1,279,price_war,71.08,-1.673,synthetic-market-v1.0,303,True
+SYN-VN-0090,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,1,180,stockout,70.42,-1.271,synthetic-market-v1.0,303,True
+SYN-VN-0091,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,1,134.4,seasonal_growth,12.91,-1.788,synthetic-market-v1.0,303,True
+SYN-ID-0092,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,1,17,stable_market,79.97,-2.269,synthetic-market-v1.0,303,True
+SYN-VN-0093,vn,VND,mondelez,Mondelez,Oreo,banh_quy,dâu,1,266,promotion_pulse,36.0,-2.265,synthetic-market-v1.0,303,True
+SYN-VN-0094,vn,VND,richy,Richy,Kenju,banh_quy,vani,1,220,price_war,40.7,-2.101,synthetic-market-v1.0,303,True
+SYN-VN-0095,vn,VND,richy,Richy,Kenju,banh_quy,dâu,1,120,stockout,75.78,-1.77,synthetic-market-v1.0,303,True
+SYN-VN-0096,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,1,279,seasonal_growth,61.85,-1.388,synthetic-market-v1.0,303,True
+SYN-VN-0097,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,1,300,stable_market,52.85,-1.944,synthetic-market-v1.0,303,True
+SYN-VN-0098,vn,VND,richy,Richy,Kenju,banh_quy,vani,1,279,promotion_pulse,51.3,-2.249,synthetic-market-v1.0,303,True
+SYN-VN-0099,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,1,186,price_war,80.87,-1.448,synthetic-market-v1.0,303,True
+SYN-ID-0100,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,1,50,stockout,40.16,-1.104,synthetic-market-v1.0,303,True
+SYN-VN-0101,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,1,300,seasonal_growth,72.97,-1.415,synthetic-market-v1.0,303,True
+SYN-VN-0102,vn,VND,richy,Richy,Karo,banh_karo,phô mai,1,26,stable_market,84.24,-1.236,synthetic-market-v1.0,303,True
+SYN-ID-0103,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,1,80,promotion_pulse,49.7,-2.349,synthetic-market-v1.0,303,True
+SYN-VN-0104,vn,VND,nestle,Nestlé,Nescafé,ca_phe,cốt dừa,1,170,price_war,18.93,-1.754,synthetic-market-v1.0,303,True
+SYN-VN-0105,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,1,399,stockout,51.62,-1.496,synthetic-market-v1.0,303,True
+SYN-ID-0106,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,1,17,seasonal_growth,32.67,-1.717,synthetic-market-v1.0,303,True
+SYN-VN-0107,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,1,100,stable_market,81.99,-2.187,synthetic-market-v1.0,303,True
+SYN-VN-0108,vn,VND,richy,Richy,Karo,banh_karo,phô mai,1,260,promotion_pulse,33.54,-1.172,synthetic-market-v1.0,303,True
+SYN-VN-0109,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,1,200,price_war,72.85,-1.753,synthetic-market-v1.0,303,True
+SYN-VN-0110,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,1,186,stockout,62.89,-1.723,synthetic-market-v1.0,303,True
+SYN-VN-0111,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,sô-cô-la,1,198,seasonal_growth,16.46,-2.169,synthetic-market-v1.0,303,True
+SYN-VN-0112,vn,VND,nestle,Nestlé,Nescafé,ca_phe,cốt dừa,1,340,stable_market,59.6,-1.372,synthetic-market-v1.0,303,True
+SYN-VN-0113,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,1,180,promotion_pulse,47.3,-1.757,synthetic-market-v1.0,303,True
+SYN-ID-0114,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,1,30,price_war,72.14,-2.037,synthetic-market-v1.0,303,True
+SYN-VN-0115,vn,VND,mondelez,Mondelez,Oreo,banh_quy,dâu,1,399,stockout,75.51,-1.679,synthetic-market-v1.0,303,True
+SYN-VN-0116,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,1,100,seasonal_growth,57.92,-1.454,synthetic-market-v1.0,303,True
+SYN-VN-0117,vn,VND,nestle,Nestlé,Nescafé,ca_phe,cốt dừa,1,255,stable_market,38.29,-1.929,synthetic-market-v1.0,303,True
+SYN-ID-0118,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,niacinamide,1,30,promotion_pulse,46.47,-2.198,synthetic-market-v1.0,303,True
+SYN-VN-0119,vn,VND,mondelez,Mondelez,AFC,banh_quy,lúa mì,1,200,price_war,44.24,-1.161,synthetic-market-v1.0,303,True
+SYN-VN-0120,vn,VND,mondelez,Mondelez,AFC,banh_quy,phô mai,1,300,stockout,62.78,-2.22,synthetic-market-v1.0,303,True
+SYN-VN-0121,vn,VND,richy,Richy,Karo,banh_karo,chà bông,1,26,seasonal_growth,25.31,-1.417,synthetic-market-v1.0,303,True
+SYN-VN-0122,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,1,180,stable_market,31.14,-2.336,synthetic-market-v1.0,303,True
+SYN-ID-0123,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,centella,1,50,promotion_pulse,75.41,-1.177,synthetic-market-v1.0,303,True
+SYN-VN-0124,vn,VND,mondelez,Mondelez,Oreo,banh_quy,dâu,1,133,price_war,67.27,-2.339,synthetic-market-v1.0,303,True
+SYN-ID-0125,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,niacinamide,1,50,stockout,68.39,-1.361,synthetic-market-v1.0,303,True
+SYN-VN-0126,vn,VND,orion,Orion,Custas,banh_bong_lan,sô-cô-la,1,282,seasonal_growth,23.02,-2.314,synthetic-market-v1.0,303,True
+SYN-VN-0127,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,sô-cô-la,1,396,stable_market,24.22,-1.379,synthetic-market-v1.0,303,True
+SYN-VN-0128,vn,VND,richy,Richy,Karo,banh_karo,sô-cô-la,1,260,promotion_pulse,32.92,-1.334,synthetic-market-v1.0,303,True
+SYN-ID-0129,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,ceramide,1,30,price_war,17.84,-1.117,synthetic-market-v1.0,303,True
+SYN-VN-0130,vn,VND,mondelez,Mondelez,AFC,banh_quy,phô mai,1,200,stockout,30.88,-1.228,synthetic-market-v1.0,303,True
+SYN-VN-0131,vn,VND,richy,Richy,Kenju,banh_quy,dâu,1,279,seasonal_growth,57.3,-2.002,synthetic-market-v1.0,303,True
+SYN-VN-0132,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,cốm sữa,1,300,stable_market,21.25,-1.747,synthetic-market-v1.0,303,True
+SYN-VN-0133,vn,VND,orion,Orion,Custas,banh_bong_lan,sô-cô-la,1,470,promotion_pulse,28.32,-1.652,synthetic-market-v1.0,303,True
+SYN-VN-0134,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,1,100,price_war,20.39,-2.284,synthetic-market-v1.0,303,True
+SYN-VN-0135,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,2,282,stockout,20.83,-1.995,synthetic-market-v1.0,303,True
+SYN-VN-0136,vn,VND,richy,Richy,Karo,banh_karo,phô mai,2,156,seasonal_growth,17.09,-2.348,synthetic-market-v1.0,303,True
+SYN-VN-0137,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,2,133,stable_market,56.53,-1.795,synthetic-market-v1.0,303,True
+SYN-VN-0138,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,2,266,promotion_pulse,71.69,-1.225,synthetic-market-v1.0,303,True
+SYN-VN-0139,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,2,180,price_war,70.48,-1.786,synthetic-market-v1.0,303,True
+SYN-VN-0140,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,2,399,stockout,32.71,-1.973,synthetic-market-v1.0,303,True
+SYN-VN-0141,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,2,180,seasonal_growth,56.09,-1.629,synthetic-market-v1.0,303,True
+SYN-VN-0142,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,2,180,stable_market,54.39,-1.883,synthetic-market-v1.0,303,True
+SYN-VN-0143,vn,VND,richy,Richy,Kenju,banh_quy,vani,2,186,promotion_pulse,22.52,-2.067,synthetic-market-v1.0,303,True
+SYN-VN-0144,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,sô-cô-la,2,330,price_war,41.81,-2.394,synthetic-market-v1.0,303,True
+SYN-VN-0145,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,2,180,stockout,71.95,-1.366,synthetic-market-v1.0,303,True
+SYN-VN-0146,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,2,220,seasonal_growth,16.99,-1.747,synthetic-market-v1.0,303,True
+SYN-VN-0147,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,2,300,stable_market,12.62,-1.6,synthetic-market-v1.0,303,True
+SYN-VN-0148,vn,VND,richy,Richy,Karo,banh_karo,chà bông,2,156,promotion_pulse,18.76,-1.103,synthetic-market-v1.0,303,True
+SYN-ID-0149,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,ceramide,2,50,price_war,25.8,-2.113,synthetic-market-v1.0,303,True
+SYN-VN-0150,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,cốm sữa,2,150,stockout,84.86,-2.027,synthetic-market-v1.0,303,True
+SYN-VN-0151,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,2,145,seasonal_growth,71.79,-1.915,synthetic-market-v1.0,303,True
+SYN-ID-0152,id,IDR,scora,Scora,Daily UV,sunscreen,centella,2,50,stable_market,17.01,-1.825,synthetic-market-v1.0,303,True
+SYN-VN-0153,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,2,330,promotion_pulse,63.66,-1.577,synthetic-market-v1.0,303,True
+SYN-VN-0154,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,2,120,price_war,12.44,-2.07,synthetic-market-v1.0,303,True
+SYN-ID-0155,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,niacinamide,2,80,stockout,16.11,-2.291,synthetic-market-v1.0,303,True
+SYN-VN-0156,vn,VND,mondelez,Mondelez,Oreo,banh_quy,sô-cô-la,2,133,seasonal_growth,56.19,-1.691,synthetic-market-v1.0,303,True
+SYN-VN-0157,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,2,255,stable_market,35.13,-1.171,synthetic-market-v1.0,303,True
+SYN-VN-0158,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,2,170,promotion_pulse,66.88,-1.803,synthetic-market-v1.0,303,True
+SYN-VN-0159,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,2,141,price_war,18.61,-2.015,synthetic-market-v1.0,303,True
+SYN-VN-0160,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,2,198,stockout,55.65,-1.77,synthetic-market-v1.0,303,True
+SYN-VN-0161,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,2,134.4,seasonal_growth,12.27,-1.625,synthetic-market-v1.0,303,True
+SYN-VN-0162,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,2,220,stable_market,18.15,-1.337,synthetic-market-v1.0,303,True
+SYN-VN-0163,vn,VND,richy,Richy,Karo,banh_karo,sô-cô-la,2,26,promotion_pulse,37.01,-1.58,synthetic-market-v1.0,303,True
+SYN-VN-0164,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,2,360,price_war,73.91,-1.25,synthetic-market-v1.0,303,True
+SYN-ID-0165,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,2,30,stockout,12.69,-1.354,synthetic-market-v1.0,303,True
+SYN-ID-0166,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,ceramide,2,80,seasonal_growth,66.4,-1.309,synthetic-market-v1.0,303,True
+SYN-VN-0167,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,2,340,stable_market,67.35,-1.277,synthetic-market-v1.0,303,True
+SYN-VN-0168,vn,VND,richy,Richy,Kenju,banh_quy,vani,2,120,promotion_pulse,33.53,-1.475,synthetic-market-v1.0,303,True
+SYN-VN-0169,vn,VND,mondelez,Mondelez,AFC,banh_quy,lúa mì,2,172,price_war,15.92,-1.597,synthetic-market-v1.0,303,True
+SYN-VN-0170,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,2,150,stockout,42.71,-1.354,synthetic-market-v1.0,303,True
+SYN-ID-0171,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,2,50,seasonal_growth,20.25,-1.788,synthetic-market-v1.0,303,True
+SYN-ID-0172,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,niacinamide,2,80,stable_market,17.2,-1.596,synthetic-market-v1.0,303,True
+SYN-VN-0173,vn,VND,orion,Orion,Custas,banh_bong_lan,vani,2,470,promotion_pulse,63.05,-1.253,synthetic-market-v1.0,303,True
+SYN-VN-0174,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,2,300,price_war,32.57,-1.413,synthetic-market-v1.0,303,True
+SYN-ID-0175,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,2,50,stockout,60.41,-2.054,synthetic-market-v1.0,303,True
+SYN-ID-0176,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,2,17,seasonal_growth,79.94,-1.923,synthetic-market-v1.0,303,True
+SYN-VN-0177,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,dâu,2,396,stable_market,73.45,-1.173,synthetic-market-v1.0,303,True
+SYN-ID-0178,id,IDR,scora,Scora,Daily UV,sunscreen,centella,2,80,promotion_pulse,67.31,-2.209,synthetic-market-v1.0,303,True
+SYN-VN-0179,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,2,340,price_war,61.56,-1.385,synthetic-market-v1.0,303,True
+SYN-VN-0180,vn,VND,richy,Richy,Karo,banh_karo,sô-cô-la,2,156,stockout,52.79,-1.158,synthetic-market-v1.0,303,True
+SYN-VN-0181,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,2,134.4,seasonal_growth,52.73,-1.404,synthetic-market-v1.0,303,True
+SYN-VN-0182,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,2,300,stable_market,49.49,-2.377,synthetic-market-v1.0,303,True
+SYN-VN-0183,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,2,300,promotion_pulse,15.64,-1.936,synthetic-market-v1.0,303,True
+SYN-VN-0184,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,2,100,price_war,77.96,-1.728,synthetic-market-v1.0,303,True
+SYN-ID-0185,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,centella,2,30,stockout,39.96,-1.721,synthetic-market-v1.0,303,True
+SYN-ID-0186,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,2,80,seasonal_growth,54.51,-2.138,synthetic-market-v1.0,303,True
+SYN-ID-0187,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,centella,2,100,stable_market,81.76,-1.226,synthetic-market-v1.0,303,True
+SYN-VN-0188,vn,VND,bibica,Bibica,Hura,banh_bong_lan,sô-cô-la,2,360,promotion_pulse,36.47,-1.329,synthetic-market-v1.0,303,True
+SYN-VN-0189,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,2,145,price_war,56.51,-1.247,synthetic-market-v1.0,303,True
+SYN-ID-0190,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,centella,2,80,stockout,57.37,-1.417,synthetic-market-v1.0,303,True
+SYN-VN-0191,vn,VND,bibica,Bibica,Hura,banh_bong_lan,dâu,2,360,seasonal_growth,55.04,-2.203,synthetic-market-v1.0,303,True
+SYN-ID-0192,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,2,50,stable_market,40.15,-1.341,synthetic-market-v1.0,303,True
+SYN-VN-0193,vn,VND,mondelez,Mondelez,AFC,banh_quy,phô mai,2,172,promotion_pulse,32.89,-1.35,synthetic-market-v1.0,303,True
+SYN-ID-0194,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,2,100,price_war,30.86,-2.036,synthetic-market-v1.0,303,True
+SYN-VN-0195,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,2,266,stockout,56.51,-1.643,synthetic-market-v1.0,303,True
+SYN-VN-0196,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,2,145,seasonal_growth,65.92,-1.208,synthetic-market-v1.0,303,True
+SYN-VN-0197,vn,VND,orion,Orion,Custas,banh_bong_lan,sô-cô-la,2,141,stable_market,18.56,-1.5,synthetic-market-v1.0,303,True
+SYN-VN-0198,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,2,220,promotion_pulse,77.25,-1.851,synthetic-market-v1.0,303,True
+SYN-VN-0199,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,2,150,price_war,30.42,-1.607,synthetic-market-v1.0,303,True
+SYN-ID-0200,id,IDR,glad2glow,Glad2Glow,Blueberry,moisturizer,niacinamide,2,50,stockout,28.41,-1.154,synthetic-market-v1.0,303,True
+SYN-VN-0201,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,cốm sữa,2,220,seasonal_growth,57.1,-1.271,synthetic-market-v1.0,303,True
+SYN-ID-0202,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,niacinamide,2,100,stable_market,26.91,-1.708,synthetic-market-v1.0,303,True
+SYN-ID-0203,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,2,80,promotion_pulse,36.38,-2.348,synthetic-market-v1.0,303,True
+SYN-VN-0204,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,2,172,price_war,31.01,-1.761,synthetic-market-v1.0,303,True
+SYN-VN-0205,vn,VND,richy,Richy,Kenju,banh_quy,dâu,2,220,stockout,56.15,-1.558,synthetic-market-v1.0,303,True
+SYN-ID-0206,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,2,50,seasonal_growth,46.29,-1.646,synthetic-market-v1.0,303,True
+SYN-ID-0207,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,2,50,stable_market,56.81,-2.223,synthetic-market-v1.0,303,True
+SYN-VN-0208,vn,VND,mondelez,Mondelez,AFC,banh_quy,lúa mì,2,300,promotion_pulse,73.97,-1.116,synthetic-market-v1.0,303,True
+SYN-VN-0209,vn,VND,nestle,Nestlé,Nescafé,ca_phe,sữa,2,255,price_war,31.85,-2.265,synthetic-market-v1.0,303,True
+SYN-VN-0210,vn,VND,richy,Richy,Kenju,banh_quy,dâu,2,186,stockout,25.82,-2.192,synthetic-market-v1.0,303,True
+SYN-ID-0211,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,2,30,seasonal_growth,70.31,-2.257,synthetic-market-v1.0,303,True
+SYN-VN-0212,vn,VND,richy,Richy,Jinju,banh_gao,phô mai,2,134.4,stable_market,33.14,-1.616,synthetic-market-v1.0,303,True
+SYN-VN-0213,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,sô-cô-la,2,220,promotion_pulse,56.59,-1.976,synthetic-market-v1.0,303,True
+SYN-VN-0214,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,2,120,price_war,66.08,-2.337,synthetic-market-v1.0,303,True
+SYN-ID-0215,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,2,80,stockout,22.65,-1.236,synthetic-market-v1.0,303,True
+SYN-VN-0216,vn,VND,richy,Richy,Karo,banh_karo,chà bông,2,260,seasonal_growth,27.81,-1.108,synthetic-market-v1.0,303,True
+SYN-VN-0217,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,2,145,stable_market,54.25,-2.072,synthetic-market-v1.0,303,True
+SYN-ID-0218,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,vitamin c,2,30,promotion_pulse,27.6,-2.1,synthetic-market-v1.0,303,True
+SYN-ID-0219,id,IDR,scora,Scora,Daily UV,sunscreen,centella,2,30,price_war,63.92,-2.056,synthetic-market-v1.0,303,True
+SYN-ID-0220,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,2,50,stockout,32.32,-1.406,synthetic-market-v1.0,303,True
+SYN-VN-0221,vn,VND,nestle,Nestlé,Nescafé,ca_phe,đen,2,170,seasonal_growth,26.11,-1.615,synthetic-market-v1.0,303,True
+SYN-ID-0222,id,IDR,scora,Scora,Daily UV,sunscreen,ceramide,2,30,stable_market,80.07,-1.124,synthetic-market-v1.0,303,True
+SYN-VN-0223,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,2,279,promotion_pulse,81.22,-1.539,synthetic-market-v1.0,303,True
+SYN-VN-0224,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,2,180,price_war,33.09,-2.249,synthetic-market-v1.0,303,True
+SYN-VN-0225,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,2,134.4,stockout,74.5,-1.151,synthetic-market-v1.0,303,True
+SYN-ID-0226,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,niacinamide,2,17,seasonal_growth,69.3,-1.963,synthetic-market-v1.0,303,True
+SYN-VN-0227,vn,VND,mondelez,Mondelez,Oreo,banh_quy,dâu,2,266,stable_market,32.05,-1.872,synthetic-market-v1.0,303,True
+SYN-VN-0228,vn,VND,richy,Richy,Kenju,banh_quy,vani,2,220,promotion_pulse,23.67,-2.042,synthetic-market-v1.0,303,True
+SYN-VN-0229,vn,VND,richy,Richy,Kenju,banh_quy,dâu,2,120,price_war,35.02,-2.217,synthetic-market-v1.0,303,True
+SYN-VN-0230,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,2,279,stockout,31.32,-1.113,synthetic-market-v1.0,303,True
+SYN-VN-0231,vn,VND,richy,Richy,Mini Bite,banh_yen_mach,phô mai,2,300,seasonal_growth,51.16,-2.179,synthetic-market-v1.0,303,True
+SYN-VN-0232,vn,VND,richy,Richy,Kenju,banh_quy,vani,2,279,stable_market,70.82,-2.078,synthetic-market-v1.0,303,True
+SYN-VN-0233,vn,VND,richy,Richy,Kenju,banh_quy,phô mai,2,186,promotion_pulse,68.02,-1.347,synthetic-market-v1.0,303,True
+SYN-ID-0234,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,2,50,price_war,15.7,-1.159,synthetic-market-v1.0,303,True
+SYN-VN-0235,vn,VND,bibica,Bibica,Hura,banh_bong_lan,vani,2,300,stockout,67.79,-2.054,synthetic-market-v1.0,303,True
+SYN-VN-0236,vn,VND,richy,Richy,Karo,banh_karo,phô mai,2,26,seasonal_growth,66.52,-1.475,synthetic-market-v1.0,303,True
+SYN-ID-0237,id,IDR,cyeecare,Cyeecare,Clear Skin,facial_wash,salicylic acid,2,80,stable_market,13.41,-1.975,synthetic-market-v1.0,303,True
+SYN-VN-0238,vn,VND,nestle,Nestlé,Nescafé,ca_phe,cốt dừa,2,170,promotion_pulse,73.96,-1.222,synthetic-market-v1.0,303,True
+SYN-VN-0239,vn,VND,mondelez,Mondelez,Oreo,banh_quy,vani,2,399,price_war,35.54,-1.645,synthetic-market-v1.0,303,True
+SYN-ID-0240,id,IDR,glad2glow,Glad2Glow,Pomegranate,serum,salicylic acid,2,17,stockout,19.64,-2.213,synthetic-market-v1.0,303,True
+SYN-VN-0241,vn,VND,richy,Richy,Jinju,banh_gao,bò nướng tiêu,2,100,seasonal_growth,20.99,-1.254,synthetic-market-v1.0,303,True
+SYN-VN-0242,vn,VND,richy,Richy,Karo,banh_karo,phô mai,2,260,stable_market,60.47,-1.707,synthetic-market-v1.0,303,True
+SYN-VN-0243,vn,VND,mondelez,Mondelez,AFC,banh_quy,rau củ,2,200,promotion_pulse,82.04,-1.458,synthetic-market-v1.0,303,True
+SYN-VN-0244,vn,VND,richy,Richy,Kenju,banh_quy,sô-cô-la,2,186,price_war,32.69,-1.541,synthetic-market-v1.0,303,True
+SYN-VN-0245,vn,VND,orion,Orion,ChocoPie,banh_bong_lan,sô-cô-la,2,198,stockout,40.87,-1.514,synthetic-market-v1.0,303,True
+SYN-VN-0246,vn,VND,nestle,Nestlé,Nescafé,ca_phe,cốt dừa,2,340,seasonal_growth,84.98,-1.808,synthetic-market-v1.0,303,True
+SYN-VN-0247,vn,VND,richy,Richy,Jinju,banh_gao,mật ong,2,180,stable_market,50.07,-2.353,synthetic-market-v1.0,303,True
+SYN-ID-0248,id,IDR,scora,Scora,Daily UV,sunscreen,vitamin c,2,30,promotion_pulse,26.09,-2.15,synthetic-market-v1.0,303,True
+SYN-VN-0249,vn,VND,mondelez,Mondelez,Oreo,banh_quy,dâu,2,399,price_war,75.89,-1.123,synthetic-market-v1.0,303,True
+SYN-VN-0250,vn,VND,richy,Richy,Jinju,banh_gao,muối hồng,2,100,stockout,63.47,-1.528,synthetic-market-v1.0,303,True

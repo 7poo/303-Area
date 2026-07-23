@@ -1,0 +1,81 @@
+{
+  "status": "valid",
+  "row_counts": {
+    "canonical_products": 250,
+    "offers": 750,
+    "variation_prices": 1050,
+    "unit_economics": 750,
+    "promotion_terms": 750,
+    "daily_market": 90000,
+    "matching_ground_truth": 3750
+  },
+  "ground_truth_distribution": {
+    "same_product_variant": 1252,
+    "substitute": 750,
+    "near_match": 750,
+    "not_comparable": 750,
+    "same_product": 248
+  },
+  "regime_distribution": {
+    "seasonal_growth": 50,
+    "stable_market": 50,
+    "promotion_pulse": 50,
+    "price_war": 50,
+    "stockout": 50
+  },
+  "data_quality_distribution": {
+    "valid": 89193,
+    "missing_snapshot": 642,
+    "price_outlier": 165
+  },
+  "unit_economics_summary": {
+    "negative_contribution_offers": 0,
+    "below_15pct_contribution_offers": 222,
+    "median_contribution_margin_pct": 18.17
+  },
+  "violations": {
+    "duplicate_offer_id": 0,
+    "missing_unit_economics": 0,
+    "invalid_default_variation_count": 0,
+    "cogs_not_below_displayed_price": 0,
+    "observed_sales_exceed_demand": 0,
+    "checkout_above_listed_price": 0
+  },
+  "config": {
+    "canonical_count": 250,
+    "sellers_per_product": 3,
+    "days": 120,
+    "seed": 303
+  },
+  "generator_version": "synthetic-market-v1.0",
+  "files": {
+    "canonical_products.csv": {
+      "rows": 250,
+      "sha256": "6caab6dbd57052daa6e2fcec0aebf4413b9de1c4931491f6768b753b58d830d7"
+    },
+    "offers.csv": {
+      "rows": 750,
+      "sha256": "7d7ad4b4c2fa1ea96ae06e7d69dc4f1917d268e36665cf1c1200049bfab0de6e"
+    },
+    "variation_prices.csv": {
+      "rows": 1050,
+      "sha256": "c94c27e4de0467322cfc5b67d111c85151bd27e7b6df065ddd8ed5b02fff945e"
+    },
+    "unit_economics.csv": {
+      "rows": 750,
+      "sha256": "b9becb3cdec10f9662130f8d84af85a755a74881be35c2f15e479d69796e60a0"
+    },
+    "promotion_terms.csv": {
+      "rows": 750,
+      "sha256": "ca79c2185181f10c791b37862271e98387261df7f30638c79660c8a14a62a916"
+    },
+    "daily_market.csv": {
+      "rows": 90000,
+      "sha256": "25fddb104c4220fd4c742a1bd6f4d4e5447779f1c2994ec7eb2ef4786114b703"
+    },
+    "matching_ground_truth.csv": {
+      "rows": 3750,
+      "sha256": "90abe2cef720e4f17bbf5e140b30e6151c69f402169b55e5185f386b5e1abc14"
+    }
+  }
+}

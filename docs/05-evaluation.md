@@ -39,22 +39,27 @@ Mục tiêu MVP đề xuất:
 Với Market Intelligence, `near_match` vẫn là peer hợp lệ để so sánh ở mức thị
 trường. Vì vậy báo cáo nên tách:
 
-- `peer_precision`: `same_product`, `substitute`, `near_match`.
-- `strict_precision`: chỉ `same_product`, `substitute`.
+- `peer_precision`: `same_product`, `same_product_variant`, `substitute`, `near_match`.
+- `strict_precision`: chỉ `same_product` cùng biến thể và quy cách.
 - `coverage/abstention`: bao nhiêu source được đánh dấu `matchable` hay
   `not_enough_evidence`.
 
-Kết quả initial adjudication hiện tại:
+Kết quả của review set legacy chỉ dùng làm lịch sử và không được gán sang cặp
+mới theo `review_id`. Với model v0.4 hiện tại:
 
 ```text
-peer_precision@1 = 1.00
-peer_precision@5 = 0.90
-strict_precision@1 = 0.95
-strict_precision@5 = 0.65
+labeled_pairs = 0 / 200
+label_join = none
+metrics = pending independent adjudication
 ```
 
-Peer metric vượt gate MVP. Strict@5 thấp hơn 0,70 cho thấy top-5 còn chứa
-near-match; điều này được giữ riêng để không che khuất giới hạn của model.
+Chỉ công bố precision/recall/F1 và confusion matrix sau khi 200 cặp mới được
+review độc lập bằng `pair_key`.
+
+Bộ 200 cặp hiện là mẫu QA phân tầng, cố ý tăng tỷ trọng dự đoán identity và
+abstention. Không dùng `coverage_on_review_sources` của mẫu này để suy rộng
+coverage toàn danh mục; coverage vận hành phải tính trực tiếp trên toàn bộ
+`product_matches`.
 
 ## Market event detection
 
@@ -68,6 +73,10 @@ Mục tiêu:
 
 - 100% event có thể truy ngược về hai snapshot.
 - 0 khóa sản phẩm trùng trong bảng event.
+
+Synthetic regression benchmark được mô tả tại
+`docs/11-synthetic-benchmark.md`. Bộ này có canonical identity, latent demand,
+stock và event truth để test edge case; không thay thế tập nhãn dữ liệu thật.
 
 ## Recommendation engine
 

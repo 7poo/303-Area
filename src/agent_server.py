@@ -123,6 +123,12 @@ class AgentHandler(BaseHTTPRequestHandler):
 
     def _api_get(self, path: str, query: dict[str, str]) -> None:
         """Handle read-only v1 resources. IDs are item IDs; country/shop disambiguate them."""
+        if path == "/api/v1/companies":
+            country = (query.get("country_code") or "").lower().strip()
+            if country not in {"vn", "id"}:
+                raise ValueError("country_code must be vn or id")
+            self._api_result(self.harness.registry.list_companies({"country_code": country}))  # type: ignore[union-attr]
+            return
         if path == "/api/v1/products":
             country = (query.get("country_code") or "").lower().strip()
             if country not in {"vn", "id"}:
@@ -132,6 +138,8 @@ class AgentHandler(BaseHTTPRequestHandler):
                 args["shop_id"] = self._int_query(query, "shop_id")
             if query.get("query"):
                 args["query"] = query["query"]
+            if query.get("company_id"):
+                args["company_id"] = query["company_id"]
             self._api_result(self.harness.registry.list_products(args))  # type: ignore[union-attr]
             return
         if path in {"/api/v1/alerts", "/api/v1/recommendations"}:
@@ -143,6 +151,10 @@ class AgentHandler(BaseHTTPRequestHandler):
                 args["shop_id"] = self._int_query(query, "shop_id")
             if query.get("severity"):
                 args["severity"] = query["severity"]
+            if query.get("company_id"):
+                args["company_id"] = query["company_id"]
+            if path.endswith("/recommendations") and query.get("recommendation_status"):
+                args["recommendation_status"] = query["recommendation_status"]
             registry = self.harness.registry  # type: ignore[union-attr]
             result = registry.list_alerts(args) if path.endswith("/alerts") else registry.list_recommendations(args)
             self._api_result(result)
@@ -262,7 +274,11 @@ def main() -> None:
     AgentHandler.harness = AgentHarness(config=config, registry=registry)
     AgentHandler.api_token = api_token
     AgentHandler.production = production
-    AgentHandler.rate_limiter = RateLimiter(int(os.getenv("AGENT_RATE_LIMIT", "60")), 60)
+    # A dashboard refresh fans out to several read-only endpoints. Keep the
+    # production default conservative, but do not make local development fail
+    # after a handful of refreshes. Both remain explicitly configurable.
+    default_rate_limit = "60" if production else "600"
+    AgentHandler.rate_limiter = RateLimiter(int(os.getenv("AGENT_RATE_LIMIT", default_rate_limit)), 60)
     server = ThreadingHTTPServer((host, port), AgentHandler)
     print(json.dumps({"listening": f"{host}:{port}", "auth_configured": bool(AgentHandler.api_token)}))
     try:
